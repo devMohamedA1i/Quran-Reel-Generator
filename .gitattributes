@@ -1,0 +1,33 @@
+# Release-archive exclusions (second line of defence after .gitignore).
+# `git archive` / GitHub "Download ZIP" honours export-ignore even if a file
+# was ever force-added. Wildcards avoid quoting paths that contain spaces.
+# The license/provenance documentation files are deliberately NOT excluded.
+
+# User-supplied, rights-unverified media
+Assets/audio/                 export-ignore
+Assets/Background*/           export-ignore
+Assets/Quran*/                export-ignore
+Assets/fonts/                 export-ignore
+Assets/*.png                  export-ignore
+Assets/*.jpg                  export-ignore
+Assets/*.jpeg                 export-ignore
+Assets/*.webp                 export-ignore
+Assets/*.svg                  export-ignore
+Assets/*.ico                  export-ignore
+
+# Generated state and user data
+Draft/                        export-ignore
+Output/                       export-ignore
+.qvs_cache/                   export-ignore
+
+# Local-only development artefacts
+.backups/                     export-ignore
+.backup-before-audio-player/  export-ignore
+tests/.chrome-profile/        export-ignore
+tests/.sandbox/               export-ignore
+tests/draft-baseline/         export-ignore
+tests/logs/                   export-ignore
+tests/screenshots/            export-ignore
+*.log                         export-ignore
+HANDOFF.md                    export-ignore
+PHASE1_REPORT.md              export-ignore

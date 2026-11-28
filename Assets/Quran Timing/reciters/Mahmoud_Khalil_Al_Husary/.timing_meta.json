@@ -1,0 +1,9 @@
+{
+  "reciter_id": "husary",
+  "reciter_name": "Sheikh Mahmoud Khalil Al-Husary",
+  "edition_id": "mp3quran-husary-murattal-r1",
+  "mp3quran_reciter_id": 118,
+  "mp3quran_read_id": 118,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/mahmoud-husary/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=118"
+}

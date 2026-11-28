@@ -1,0 +1,9 @@
+{
+  "reciter_id": "shuraim",
+  "reciter_name": "Sheikh Saud Al-Shuraim",
+  "edition_id": "mp3quran-shuraim-murattal-r1",
+  "mp3quran_reciter_id": 31,
+  "mp3quran_read_id": 31,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/saud-shuraim/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=31"
+}

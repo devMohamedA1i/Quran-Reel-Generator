@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f1e7" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Quran Reels" />
+    <meta name="description" content="100% free, open-source studio for creating synchronized 9:16 Quran reels with authentic Uthmani script & English translation — works right on iPhone, Android, macOS & Windows with zero watermarks." />
+    <meta name="author" content="Developer. Mohamed Ali — https://github.com/devMohamedA1i" />
+    <!-- OpenGraph / WhatsApp / Telegram / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://devmohameda1i.github.io/Quran-Reel-Generator/" />
+    <meta property="og:title" content="Quran Reel Generator — مولّد ريلز القرآن" />
+    <meta property="og:description" content="100% free, open-source 9:16 Quran reel studio. 10 reciters, all 114 Surahs, authentic Uthmani script, automatic 3-minute reel splitting & on-device MP4 export — no ads, no watermarks." />
+    <meta property="og:image" content="https://devmohameda1i.github.io/Quran-Reel-Generator/assets/social-preview.png" />
+    <meta property="og:image:width" content="2560" />
+    <meta property="og:image:height" content="1280" />
+    <!-- X / Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Quran Reel Generator — مولّد ريلز القرآن" />
+    <meta name="twitter:description" content="Free, open-source 9:16 Quran reel maker for iPhone, Android, macOS & Windows. Uthmani script, 10 reciters, 114 Surahs, zero watermarks." />
+    <meta name="twitter:image" content="https://devmohameda1i.github.io/Quran-Reel-Generator/assets/social-preview.png" />
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="icon" type="image/png" href="./assets/quran-header-icon.png" />
+    <link rel="apple-touch-icon" href="./app-icon-512.png" />
+    <title>Quran Reel Generator — مولّد ريلز القرآن</title>
+    <script>
+      window.__qrgInstallPrompt = null;
+      window.addEventListener('beforeinstallprompt', function (e) {
+        e.preventDefault();
+        window.__qrgInstallPrompt = e;
+      });
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

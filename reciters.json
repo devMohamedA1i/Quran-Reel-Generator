@@ -1,0 +1,782 @@
+{
+  "verified_on": "2026-11-16",
+  "text": {
+    "provider": "Tanzil Project",
+    "page_url": "https://tanzil.net/download/",
+    "download_url": "https://tanzil.net/download/",
+    "licence_url": "https://tanzil.net/docs/Text_License",
+    "status": "verified",
+    "summary": "One complete Uthmani dataset can be reused for every reciter. You do not need 114 separate text files.",
+    "note": "Download the Uthmani text. Keep it verbatim: Tanzil does not allow changing the text. Clearly credit the Tanzil Project and link to tanzil.net.",
+    "terms": {
+      "download": "Permitted",
+      "local_editing": "Not permitted - the text must stay verbatim",
+      "sharing": "Permitted with attribution and a link to tanzil.net",
+      "monetisation": "Not addressed by the published terms",
+      "redistribution": "Permitted verbatim with attribution",
+      "attribution": "Clearly indicate the Tanzil Project and link to tanzil.net"
+    },
+    "evidence": [
+      {
+        "label": "Tanzil download page and terms of use",
+        "url": "https://tanzil.net/download/",
+        "checked": "2026-11-16"
+      },
+      {
+        "label": "Tanzil text licence",
+        "url": "https://tanzil.net/docs/Text_License",
+        "checked": "2026-11-16"
+      }
+    ],
+    "summary_ar": "يمكن إعادة استخدام مجموعة بيانات عثمانية كاملة واحدة لكل قارئ؛ لا تحتاج إلى ١١٤ ملفاً نصياً منفصلاً.",
+    "note_ar": "نزّل النص العثماني واحتفظ به كما هو دون تغيير؛ لا يسمح مشروع Tanzil بتعديل النص. اذكر مشروع Tanzil بوضوح وأضف رابطاً إلى tanzil.net.",
+    "terms_ar": {
+      "download": "مسموح",
+      "local_editing": "غير مسموح - يجب أن يبقى النص كما هو",
+      "sharing": "مسموح مع ذكر المصدر ورابط إلى tanzil.net",
+      "monetisation": "لم تتناولها الشروط المنشورة",
+      "redistribution": "مسموح كما هو مع ذكر المصدر",
+      "attribution": "اذكر مشروع Tanzil بوضوح وأضف رابطاً إلى tanzil.net"
+    }
+  },
+  "reciters": [
+    {
+      "id": "abdulbasit",
+      "name": "Abd Elbasit Abd Elsamad",
+      "aliases": [
+        "abd elbasit",
+        "abd elsamed",
+        "abdulbasit",
+        "abdus samad",
+        "abdul basit",
+        "basit",
+        "عبد الباسط",
+        "عبد الباسط عبد الصمد"
+      ],
+      "summary": "Several distinct editions exist. Murattal, Mujawwad and Warsh are different recordings and must not share timing files.",
+      "recordings": [
+        {
+          "id": "basit-mp3quran-murattal",
+          "label": "Murattal - Hafs 'an 'Asim (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/basit",
+          "download_url": "https://cdn.mp3quran.net/audio/abdulbasit-abdulsamad/r3/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No timing dataset is published for this MP3Quran edition.",
+            "note_ar": "لا توجد مجموعة توقيت منشورة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "The page offers the recordings, but no published licence was found that authorises publishing or monetising exported reels. Treat publication rights as unknown.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran reciter page",
+                "url": "https://www.mp3quran.net/eng/basit",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة القارئ على MP3Quran"
+              }
+            ],
+            "summary_ar": "الصفحة تعرض التسجيلات، لكن لم يتم العثور على ترخيص منشور يجيز نشر الريلز المصدّرة أو تحقيق دخل منها. لذا تُعتبر حقوق النشر غير معروفة.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "مرتل - حفظ عن عاصم (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "basit-mp3quran-mujawwad",
+          "label": "Mujawwad - Hafs 'an 'Asim (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/basit",
+          "download_url": "https://cdn.mp3quran.net/audio/abdulbasit-abdulsamad/r1/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "Timing files for the EveryAyah Mujawwad recording do not match this MP3Quran edition.",
+            "note_ar": "ملفات التوقيت الخاصة بتسجيل EveryAyah المجوّد لا تطابق هذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran reciter page",
+                "url": "https://www.mp3quran.net/eng/basit",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة القارئ على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "مجوّد - حفظ عن عاصم (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "basit-mp3quran-warsh",
+          "label": "Warsh 'an Nafi' - Murattal (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/basit",
+          "download_url": "https://cdn.mp3quran.net/audio/abdulbasit-abdulsamad/r2/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No timing dataset is published for this edition.",
+            "note_ar": "لا توجد مجموعة توقيت منشورة لهذا الإصدار."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran reciter page",
+                "url": "https://www.mp3quran.net/eng/basit",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة القارئ على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "ورش عن نافع - مرتل (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "basit-everyayah-murattal",
+          "label": "Murattal - 192 kbps (EveryAyah)",
+          "provider": "EveryAyah",
+          "provider_page": "https://everyayah.com/recitations_ayat.html",
+          "download_url": "https://everyayah.com/data/Abdul_Basit_Murattal_192kbps/",
+          "format": "Verse-by-verse MP3 files",
+          "timing": {
+            "status": "restricted",
+            "url": "https://everyayah.com/data/timings_files/Abdul_Basit_Murattal_Timings.zip",
+            "note": "Provided by VerseByVerseQuran.com. Their disclaimer requires a link back to their site. The full licence page they name currently returns 404, so permission is not established.",
+            "licence_url": "https://everyayah.com/data/timings_files/000_disclaimer.txt",
+            "note_ar": "قدّمتها VerseByVerseQuran.com، وينص إخلاء المسؤولية لديها على ضرورة إدراج رابط إلى موقعها. صفحة الترخيص الكاملة التي تشير إليها تعيد حالياً خطأ 404، لذلك لم يتم تأكيد الإذن."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "EveryAyah publishes no reuse licence on the pages checked. Downloading is possible; publication and monetisation rights are unknown.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified for the audio"
+            },
+            "evidence": [
+              {
+                "label": "EveryAyah recitation list",
+                "url": "https://everyayah.com/recitations_ayat.html",
+                "checked": "2026-11-16",
+                "label_ar": "قائمة التلاوات على EveryAyah"
+              }
+            ],
+            "summary_ar": "لا ينشر EveryAyah ترخيصاً لإعادة الاستخدام في الصفحات التي تم فحصها. التنزيل ممكن، أما حقوق النشر وتحقيق الدخل فهي غير معروفة.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد للصوت"
+            }
+          },
+          "label_ar": "مرتل - ١٩٢ كيلوبت/ثانية (EveryAyah)",
+          "format_ar": "ملفات MP3 آية بأية"
+        },
+        {
+          "id": "basit-everyayah-mujawwad",
+          "label": "Mujawwad - 128 kbps (EveryAyah)",
+          "provider": "EveryAyah",
+          "provider_page": "https://everyayah.com/recitations_ayat.html",
+          "download_url": "https://everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/",
+          "format": "Verse-by-verse MP3 files",
+          "timing": {
+            "status": "restricted",
+            "url": "https://everyayah.com/data/timings_files/Abdul_Basit_Mujawwad.zip",
+            "note": "VerseByVerseQuran.com requires a link back. The full licence page currently returns 404, so permission is not established.",
+            "licence_url": "https://everyayah.com/data/timings_files/000_disclaimer.txt",
+            "note_ar": "تطلب VerseByVerseQuran.com إدراج رابط إلى موقعها. صفحة الترخيص الكاملة تعيد حالياً خطأ 404، لذلك لم يتم تأكيد الإذن."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No reuse licence was found on the provider pages checked.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified for the audio"
+            },
+            "evidence": [
+              {
+                "label": "EveryAyah recitation list",
+                "url": "https://everyayah.com/recitations_ayat.html",
+                "checked": "2026-11-16",
+                "label_ar": "قائمة التلاوات على EveryAyah"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص لإعادة الاستخدام في صفحات المزوّد التي تم فحصها.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد للصوت"
+            }
+          },
+          "label_ar": "مجوّد - ١٢٨ كيلوبت/ثانية (EveryAyah)",
+          "format_ar": "ملفات MP3 آية بأية"
+        }
+      ],
+      "name_ar": "عبد الباسط عبد الصمد",
+      "summary_ar": "توجد عدة إصدارات مختلفة. المرتل والمجوّد وورش تسجيلات متباينة ويجب ألا تشترك في ملفات التوقيت."
+    },
+    {
+      "id": "alafasy",
+      "name": "Mishary Rashid Alafasy",
+      "aliases": [
+        "mishary",
+        "alafasy",
+        "alafasi",
+        "rashid",
+        "العفاسي",
+        "مشاري راشد العفاسي"
+      ],
+      "summary": "One main Hafs Murattal recording. No compatible timing dataset was found for it, so the app offers audio-only reels for this reciter.",
+      "recordings": [
+        {
+          "id": "alafasy-mp3quran-hafs",
+          "label": "Murattal - Hafs 'an 'Asim (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/afs",
+          "download_url": "https://cdn.mp3quran.net/audio/mishary-alafasy/r1/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No matching timing dataset was found on the checked sources.",
+            "note_ar": "لم يتم العثور على مجموعة توقيت مطابقة في المصادر التي تم فحصها."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran reciter page",
+                "url": "https://www.mp3quran.net/eng/afs",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة القارئ على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "مرتل - حفظ عن عاصم (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "alafasy-everyayah",
+          "label": "Murattal - 128 kbps (EveryAyah)",
+          "provider": "EveryAyah",
+          "provider_page": "https://everyayah.com/recitations_ayat.html",
+          "download_url": "https://everyayah.com/data/Alafasy_128kbps/",
+          "format": "Verse-by-verse MP3 files",
+          "timing": {
+            "status": "unavailable",
+            "note": "EveryAyah's timing list has no Alafasy entry.",
+            "note_ar": "قائمة التوقيت في EveryAyah لا تتضمن مدخلاً للعفاسي."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No reuse licence was found on the provider pages checked.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified for the audio"
+            },
+            "evidence": [
+              {
+                "label": "EveryAyah recitation list",
+                "url": "https://everyayah.com/recitations_ayat.html",
+                "checked": "2026-11-16",
+                "label_ar": "قائمة التلاوات على EveryAyah"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص لإعادة الاستخدام في صفحات المزوّد التي تم فحصها.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد للصوت"
+            }
+          },
+          "label_ar": "مرتل - ١٢٨ كيلوبت/ثانية (EveryAyah)",
+          "format_ar": "ملفات MP3 آية بأية"
+        }
+      ],
+      "name_ar": "مشاري راشد العفاسي",
+      "summary_ar": "يوجد تسجيل مرتل واحد بحفظ عن عاصم. لم يتم العثور على مجموعة توقيت متوافقة معه، لذلك يوفر التطبيق ريلز صوتية فقط لهذا القارئ."
+    },
+    {
+      "id": "alajmi",
+      "name": "Ahmed Al-Ajmi",
+      "aliases": [
+        "ahmed",
+        "ahmad",
+        "ajmi",
+        "ajmy",
+        "alajmi",
+        "العجمي",
+        "أحمد العجمي"
+      ],
+      "summary": "The built-in 128 kbps Al-Ajmi library is already installed. The links below are for other copies or a fresh download. Timing files exist for the EveryAyah 128 kbps edition only.",
+      "recordings": [
+        {
+          "id": "ajmi-builtin",
+          "label": "Built-in library - 128 kbps (already installed)",
+          "provider": "Quran Reel Generator",
+          "provider_page": "https://www.mp3quran.net/eng/ajm",
+          "download_url": "",
+          "format": "One MP3 per Surah, already in Assets/audio",
+          "timing": {
+            "status": "verified",
+            "note": "The matching timing files are already included with the built-in library.",
+            "licence_url": "",
+            "note_ar": "ملفات التوقيت المطابقة مضمّنة بالفعل مع المكتبة المدمجة."
+          },
+          "rights": {
+            "status": "restricted",
+            "summary": "The recordings are included for use inside this tool. No right to redistribute the original MP3 files is granted.",
+            "fields": {
+              "download": "Not needed - already included",
+              "local_editing": "Permitted inside this tool",
+              "sharing_exported_reels": "Check the original recording rights before publishing",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not permitted",
+              "attribution": "Credit the reciter"
+            },
+            "evidence": [
+              {
+                "label": "Project asset manifest",
+                "url": "README.md",
+                "checked": "2026-11-16",
+                "label_ar": "قائمة ملفات المشروع"
+              }
+            ],
+            "summary_ar": "التسجيلات مضمّنة للاستخدام داخل هذا التطبيق فقط، ولا يُمنح أي حق في إعادة توزيع ملفات MP3 الأصلية.",
+            "fields_ar": {
+              "download": "غير مطلوب - مضمّن بالفعل",
+              "local_editing": "مسموح داخل هذا التطبيق",
+              "sharing_exported_reels": "تحقق من حقوق التسجيل الأصلية قبل النشر",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مسموح",
+              "attribution": "اذكر اسم القارئ"
+            }
+          },
+          "label_ar": "المكتبة المدمجة - ١٢٨ كيلوبت/ثانية (مثبتة بالفعل)",
+          "format_ar": "ملف MP3 واحد لكل سورة، موجود بالفعل في Assets/audio"
+        },
+        {
+          "id": "ajmi-mp3quran",
+          "label": "Murattal - Hafs 'an 'Asim (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/ajm",
+          "download_url": "https://cdn.mp3quran.net/audio/ahmad-ajmi/r1/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No timing dataset is published for this MP3Quran edition.",
+            "note_ar": "لا توجد مجموعة توقيت منشورة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran reciter page",
+                "url": "https://www.mp3quran.net/eng/ajm",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة القارئ على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "مرتل - حفظ عن عاصم (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "ajmi-everyayah",
+          "label": "Murattal - 128 kbps (EveryAyah)",
+          "provider": "EveryAyah",
+          "provider_page": "https://everyayah.com/recitations_ayat.html",
+          "download_url": "https://everyayah.com/data/Ahmed_ibn_Ali_al-Ajamy_128kbps_ketaballah.net/",
+          "format": "Verse-by-verse MP3 files",
+          "timing": {
+            "status": "restricted",
+            "url": "https://everyayah.com/data/timings_files/ahmed_ibn_ali_al_ajamy_128kbps.zip",
+            "note": "VerseByVerseQuran.com requires a link back. The full licence page currently returns 404, so permission is not established.",
+            "licence_url": "https://everyayah.com/data/timings_files/000_disclaimer.txt",
+            "note_ar": "تطلب VerseByVerseQuran.com إدراج رابط إلى موقعها. صفحة الترخيص الكاملة تعيد حالياً خطأ 404، لذلك لم يتم تأكيد الإذن."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No reuse licence was found on the provider pages checked.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified for the audio"
+            },
+            "evidence": [
+              {
+                "label": "EveryAyah recitation list",
+                "url": "https://everyayah.com/recitations_ayat.html",
+                "checked": "2026-11-16",
+                "label_ar": "قائمة التلاوات على EveryAyah"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص لإعادة الاستخدام في صفحات المزوّد التي تم فحصها.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد للصوت"
+            }
+          },
+          "label_ar": "مرتل - ١٢٨ كيلوبت/ثانية (EveryAyah)",
+          "format_ar": "ملفات MP3 آية بأية"
+        }
+      ],
+      "name_ar": "أحمد العجمي",
+      "summary_ar": "مكتبة العجمي المدمجة بمعدل ١٢٨ كيلوبت/ثانية مثبتة بالفعل. الروابط أدناه لنسخ أخرى أو لتنزيل جديد. ملفات التوقيت متوفرة لإصدار EveryAyah بمعدل ١٢٨ كيلوبت/ثانية فقط."
+    },
+    {
+      "id": "hussary",
+      "name": "Mahmoud Khalil Al-Hussary",
+      "aliases": [
+        "mahmoud",
+        "khalil",
+        "hussary",
+        "husary",
+        "husr",
+        "محمود خليل الحصري"
+      ],
+      "summary": "Five distinct MP3Quran editions are published. They are different recordings and must not share timing files. No matching timing dataset was found, so these are audio-only options.",
+      "recordings": [
+        {
+          "id": "hussary-hafs-murattal",
+          "label": "Hafs 'an 'Asim - Murattal (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/husr",
+          "download_url": "https://cdn.mp3quran.net/audio/mahmoud-husary/r1/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No matching timing dataset was found for this MP3Quran edition.",
+            "note_ar": "لم يتم العثور على مجموعة توقيت مطابقة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "The page offers the recordings, but no published licence was found that authorises publishing or monetising exported reels. Treat publication rights as unknown.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran Al-Hussary Murattal page",
+                "url": "https://www.mp3quran.net/eng/husr",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة الحصري المرتل على MP3Quran"
+              }
+            ],
+            "summary_ar": "الصفحة تعرض التسجيلات، لكن لم يتم العثور على ترخيص منشور يجيز نشر الريلز المصدّرة أو تحقيق دخل منها. لذا تُعتبر حقوق النشر غير معروفة.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "حفظ عن عاصم - مرتل (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "hussary-hafs-mujawwad",
+          "label": "Hafs 'an 'Asim - Mujawwad (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/husr_mjwd",
+          "download_url": "https://cdn.mp3quran.net/audio/mahmoud-husary/r2/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No matching timing dataset was found for this MP3Quran edition.",
+            "note_ar": "لم يتم العثور على مجموعة توقيت مطابقة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran Al-Hussary Mujawwad page",
+                "url": "https://www.mp3quran.net/eng/husr_mjwd",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة الحصري المجوّد على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "حفظ عن عاصم - مجوّد (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "hussary-warsh",
+          "label": "Warsh 'an Nafi' - Murattal (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/husr_warsh",
+          "download_url": "https://cdn.mp3quran.net/audio/mahmoud-husary/r3/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No matching timing dataset was found for this MP3Quran edition.",
+            "note_ar": "لم يتم العثور على مجموعة توقيت مطابقة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran Al-Hussary Warsh page",
+                "url": "https://www.mp3quran.net/eng/husr_warsh",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة الحصري برواية ورش على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "ورش عن نافع - مرتل (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "hussary-dori",
+          "label": "Aldori 'an Abi 'Amr - Murattal (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/husr-dori",
+          "download_url": "https://cdn.mp3quran.net/audio/mahmoud-husary/r4/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No matching timing dataset was found for this MP3Quran edition.",
+            "note_ar": "لم يتم العثور على مجموعة توقيت مطابقة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran Al-Hussary Aldori page",
+                "url": "https://www.mp3quran.net/eng/husr-dori",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة الحصري بالدوري على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "الدوري عن أبي عمرو - مرتل (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        },
+        {
+          "id": "hussary-qalon",
+          "label": "Qalon 'an Nafi' - Murattal (MP3Quran)",
+          "provider": "MP3Quran",
+          "provider_page": "https://www.mp3quran.net/eng/husr-qalon",
+          "download_url": "https://cdn.mp3quran.net/audio/mahmoud-husary/r5/",
+          "format": "One MP3 per Surah",
+          "timing": {
+            "status": "unavailable",
+            "note": "No matching timing dataset was found for this MP3Quran edition.",
+            "note_ar": "لم يتم العثور على مجموعة توقيت مطابقة لهذا الإصدار من MP3Quran."
+          },
+          "rights": {
+            "status": "not-established",
+            "summary": "No published licence authorising publication or monetisation was found on the provider page.",
+            "fields": {
+              "download": "Available from the provider page",
+              "local_editing": "Not addressed by the provider",
+              "sharing_exported_reels": "Not established",
+              "monetisation": "Not established",
+              "redistributing_mp3s": "Not established",
+              "attribution": "Not specified"
+            },
+            "evidence": [
+              {
+                "label": "MP3Quran Al-Hussary Qalon page",
+                "url": "https://www.mp3quran.net/eng/husr-qalon",
+                "checked": "2026-11-16",
+                "label_ar": "صفحة الحصري برواية قالون على MP3Quran"
+              }
+            ],
+            "summary_ar": "لم يتم العثور على ترخيص منشور يجيز النشر أو تحقيق الدخل في صفحة المزوّد.",
+            "fields_ar": {
+              "download": "متاح من صفحة المزوّد",
+              "local_editing": "لم يتناوله المزوّد",
+              "sharing_exported_reels": "غير مؤكد",
+              "monetisation": "غير مؤكد",
+              "redistributing_mp3s": "غير مؤكد",
+              "attribution": "غير محدد"
+            }
+          },
+          "label_ar": "قالون عن نافع - مرتل (MP3Quran)",
+          "format_ar": "ملف MP3 واحد لكل سورة"
+        }
+      ],
+      "name_ar": "محمود خليل الحصري",
+      "summary_ar": "نُشرت خمسة إصدارات مختلفة على MP3Quran. هي تسجيلات متباينة ويجب ألا تشترك في ملفات التوقيت. لم يتم العثور على مجموعة توقيت مطابقة، لذا هذه خيارات صوتية فقط."
+    }
+  ]
+}

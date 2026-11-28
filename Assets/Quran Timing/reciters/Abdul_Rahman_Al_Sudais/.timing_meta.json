@@ -1,0 +1,9 @@
+{
+  "reciter_id": "sudais",
+  "reciter_name": "Sheikh Abdul Rahman Al-Sudais",
+  "edition_id": "mp3quran-sudais-murattal-r1",
+  "mp3quran_reciter_id": 54,
+  "mp3quran_read_id": 54,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/abdulrahman-sudais/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=54"
+}

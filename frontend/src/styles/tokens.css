@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'UthmanicHafs';
+  src: url('/assets/fonts/UthmanicHafs1Ver18.ttf') format('truetype');
+  font-display: swap;
+}
+
+:root {
+  /* Banner-matched luminous ivory, sage olive, champagne gold & warm umber palette */
+  --bg-deep: #ede4d3;
+  --bg-primary: #f6f1e7;
+  --bg-surface: #fffdf8;
+  --bg-surface-hover: #f5eedf;
+  --bg-elevated: #f8f3e8;
+  --bg-input: #fffdf9;
+
+  /* Sage olive green (from Holy Quran cover & bookmark ribbon) */
+  --sage: #5b7846;
+  --sage-deep: #445c33;
+  --sage-soft: #7b9862;
+  --sage-tint: rgba(91, 120, 70, 0.11);
+
+  /* Rich luminous gold — primary buttons & gold accents */
+  --gold-bright: #ffe184;
+  --gold: #f2bc38;
+  --gold-deep: #c98e14;
+  --gold-gradient: linear-gradient(180deg, #ffe285 0%, #f4bc3a 55%, #e2a21e 100%);
+  --gold-gradient-hover: linear-gradient(180deg, #ffea9f 0%, #f8c84e 55%, #ebb02e 100%);
+
+  /* Borders */
+  --border-subtle: rgba(91, 120, 70, 0.22);
+  --border-strong: rgba(91, 120, 70, 0.48);
+  --border-panel: rgba(91, 120, 70, 0.22);
+
+  /* Text (warm calligraphy umber from Asma al-Husna panel) */
+  --text-primary: #382b1d;
+  --text-secondary: #5c4e3d;
+  --text-muted: #9a9691;
+  --text-on-gold: #2a1d08;
+
+  /* Verification success (deep emerald-sage) */
+  --success-bg: linear-gradient(180deg, #4f7a3e 0%, #3a5d2c 100%);
+  --success-solid: #466e36;
+  --success-border: #6a9657;
+  --success-text: #fcfbf7;
+
+  /* Verification failure (warm terracotta/rose) */
+  --error-bg: linear-gradient(180deg, #a83c48 0%, #832934 100%);
+  --error-solid: #9e3541;
+  --error-border: #c95c68;
+  --error-text: #fff8f9;
+
+  /* Warning */
+  --warn-bg: rgba(91, 120, 70, 0.12);
+  --warn-border: rgba(91, 120, 70, 0.42);
+  --warn-text: #3f5b2d;
+
+  /* Radii & Shadows */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-card: 0 8px 24px rgba(64, 58, 44, 0.08);
+  --shadow-gold: 0 4px 14px rgba(226, 162, 30, 0.30);
+
+  /* Fonts */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-arabic: 'Geeza Pro', 'Arabic Typesetting', 'Noto Naskh Arabic', Tahoma, sans-serif;
+  --font-quran: 'UthmanicHafs', 'Geeza Pro', 'Noto Naskh Arabic', serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}

@@ -1,0 +1,9 @@
+{
+  "reciter_id": "abdulbasit",
+  "reciter_name": "Sheikh Abdul Basit Abdul Samad",
+  "edition_id": "mp3quran-abdulbasit-mojawwad-r1",
+  "mp3quran_reciter_id": 51,
+  "mp3quran_read_id": 51,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/abdulbasit-abdulsamad/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=51"
+}

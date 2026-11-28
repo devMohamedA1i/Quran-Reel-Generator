@@ -1,0 +1,9 @@
+{
+  "reciter_id": "muaiqly",
+  "reciter_name": "Sheikh Maher Al-Muaiqly",
+  "edition_id": "mp3quran-muaiqly-mojawwad-r3",
+  "mp3quran_reciter_id": 102,
+  "mp3quran_read_id": 133,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/maher-muaiqly/r3/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=133"
+}

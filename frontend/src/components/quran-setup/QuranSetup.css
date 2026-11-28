@@ -1,0 +1,474 @@
+.quran-setup-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.setup-card {
+  background: linear-gradient(180deg, #fffdf9 0%, #f8f2e6 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 13px;
+  padding: 13px 16px;
+  box-shadow: var(--shadow-card);
+}
+
+.setup-step-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  margin-bottom: 10px;
+}
+
+.setup-step-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.gold-accent {
+  color: var(--gold-deep);
+}
+
+.step-connector {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  color: var(--gold);
+  opacity: 0.8;
+}
+
+/* Reciter dropdown */
+.reciter-dropdown {
+  position: relative;
+}
+
+.reciter-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  color: var(--text-primary);
+  text-align: start;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.reciter-trigger:hover,
+.reciter-trigger.is-open {
+  border-color: var(--gold-bright);
+  box-shadow: 0 0 0 2px rgba(224, 180, 76, 0.16);
+}
+
+.reciter-placeholder {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 4px 2px;
+}
+
+.reciter-row-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.reciter-portrait {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 1.5px solid var(--border-strong);
+  flex-shrink: 0;
+  background: var(--bg-deep);
+}
+
+.reciter-text {
+  font-size: 13px;
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.reciter-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.reciter-sep {
+  color: var(--text-muted);
+}
+
+.reciter-details {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.reciter-chevron {
+  color: var(--gold-deep);
+  display: inline-flex;
+  transition: transform 0.18s ease;
+  flex-shrink: 0;
+}
+
+.reciter-chevron.up {
+  transform: rotate(180deg);
+}
+
+.reciter-listbox {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 35;
+  max-height: 360px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: #fffdf8;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  box-shadow: 0 14px 32px rgba(84, 63, 34, 0.18);
+  animation: dropdownFadeIn 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reciter-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 7px;
+  border-bottom: 1px solid rgba(182, 144, 72, 0.14);
+  cursor: pointer;
+  transition: background 0.14s ease;
+}
+
+.reciter-option:last-child {
+  border-bottom: none;
+}
+
+.reciter-option:hover,
+.reciter-option:focus-visible {
+  background: rgba(224, 180, 76, 0.12);
+  outline: none;
+}
+
+.reciter-option.selected {
+  background: linear-gradient(90deg, rgba(224, 180, 76, 0.22) 0%, rgba(224, 180, 76, 0.08) 100%);
+  border: 1px solid var(--gold);
+}
+
+.reciter-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Step 2: Download Quran Audio */
+.save-location-line {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.save-location-label {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.save-location-path {
+  color: var(--text-secondary);
+}
+
+.setup-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.verify-inline-wrap {
+  margin: 0 0 12px;
+}
+
+.download-action-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.download-btn {
+  width: auto;
+  max-width: 100%;
+  min-height: 40px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 9px 22px;
+  border: 1px solid transparent;
+  transition: all 0.16s ease;
+}
+
+.download-btn.is-downloading {
+  width: 100%;
+  max-width: 460px;
+}
+
+.download-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+.download-btn.is-idle {
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  border-color: var(--gold-bright);
+  box-shadow: var(--shadow-gold);
+}
+
+.download-btn.is-idle:hover {
+  background: var(--gold-gradient-hover);
+}
+
+.download-btn.is-downloading {
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  border-color: var(--gold-bright);
+  box-shadow: var(--shadow-gold);
+  justify-content: space-between;
+  opacity: 1;
+  cursor: default;
+}
+
+.download-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  padding-inline-end: 10px;
+  border-inline-end: 1px solid rgba(19, 40, 44, 0.25);
+  flex-shrink: 0;
+}
+
+.download-btn-icon-plain {
+  display: inline-flex;
+  align-items: center;
+}
+
+.download-btn-progress-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  text-align: start;
+}
+
+.download-btn-progress-text {
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.download-btn-track {
+  width: 100%;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(19, 40, 44, 0.24);
+  overflow: hidden;
+  display: block;
+}
+
+.download-btn-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: #445c33;
+  transition: width 0.25s ease;
+}
+
+.download-btn-percent {
+  font-size: 13px;
+  font-weight: 800;
+  padding-inline-start: 10px;
+  border-inline-start: 1px solid rgba(19, 40, 44, 0.25);
+  flex-shrink: 0;
+}
+
+.download-btn.is-completed {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-border);
+  opacity: 1;
+  cursor: default;
+  box-shadow: 0 3px 12px rgba(33, 147, 79, 0.25);
+}
+
+.download-btn-check {
+  display: inline-flex;
+}
+
+.download-error-note {
+  margin: 8px 0 0;
+  text-align: center;
+  color: #9e3541;
+  font-size: 12px;
+}
+
+/* Step 3: Compact Verify Quran Files */
+.verify-card {
+  padding: 10px 14px;
+}
+
+.verify-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.verify-btn {
+  padding: 6px 14px;
+  min-height: 32px;
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.16s ease;
+}
+
+.verify-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.verify-btn:hover:not(:disabled) {
+  background: var(--bg-surface-hover);
+  border-color: var(--gold-bright);
+}
+
+.verify-btn-icon {
+  display: inline-flex;
+  color: var(--gold-bright);
+}
+
+.verify-result-wrap {
+  margin-top: 8px;
+}
+
+.verify-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  border-radius: 8px;
+}
+
+.verify-banner.is-verified {
+  background: var(--success-bg);
+  border: 1px solid var(--success-border);
+  color: var(--success-text);
+}
+
+.verify-banner.is-not-found,
+.verify-banner.is-guide {
+  background: #fdf6e3;
+  border: 1px solid rgba(196, 152, 62, 0.45);
+  color: #543e16;
+}
+
+.verify-banner.is-guide .verify-banner-icon {
+  color: #b58420;
+}
+
+.verify-banner-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.verify-banner-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.verify-banner-body {
+  flex: 1;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.verify-banner-title {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.verify-banner-detail {
+  font-size: 12px;
+  opacity: 0.92;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .setup-card {
+    padding: 12px;
+  }
+  .reciter-text {
+    white-space: normal;
+  }
+  .verify-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .verify-banner-icon {
+    border-inline-end: none;
+    padding-inline-end: 0;
+  }
+  .verify-next-btn {
+    width: 100%;
+  }
+}

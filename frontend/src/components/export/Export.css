@@ -1,0 +1,172 @@
+/* Section 4 (Export) — banner-matched ivory, sage green & champagne gold */
+.export-page {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.export-page .card {
+  padding: 24px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f8f2e6 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 17px;
+  box-shadow: var(--shadow-card);
+}
+
+.export-summary h3,
+.output-history-head h3 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.output-history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.output-history-head h3 {
+  margin: 0;
+}
+
+.export-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+  margin: 0 0 18px;
+}
+
+.export-meta-grid dt {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.export-meta-grid dd {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.readiness-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.export-action-row {
+  margin-bottom: 14px;
+}
+
+.export-page .btn-gold {
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  border-color: var(--gold-bright);
+  border-radius: 10px;
+}
+
+.export-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.export-progress-bar {
+  height: 7px;
+  background: #eae0cc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.export-progress-fill {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.25s ease;
+}
+
+.export-progress-msg {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.export-result-box {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.export-result-box h4 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--sage-deep);
+}
+
+.export-result-path {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+}
+
+.export-player {
+  width: 100%;
+  max-width: 310px;
+  border-radius: 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-primary);
+  display: block;
+}
+
+.output-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.output-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 11px;
+  background: #fffdf9;
+  border: 1px solid var(--border-subtle);
+}
+
+.output-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.output-item-path {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.muted-note {
+  color: var(--text-muted);
+  margin: 8px 0;
+  font-size: 13px;
+}
+
+@media (max-width: 640px) {
+  .export-meta-grid {
+    grid-template-columns: 1fr;
+  }
+}

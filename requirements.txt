@@ -1,0 +1,6 @@
+# Runtime Python dependencies for Quran Reel Generator.
+# Python 3.10+ is required. Pillow must be built with RAQM for correct Arabic
+# shaping; scripts/preflight.py checks this and FFmpeg/FFprobe on PATH.
+# Audio/background/Quran media is NOT bundled — see THIRD_PARTY_NOTICES.md.
+Flask>=3.0,<4
+Pillow>=10,<14

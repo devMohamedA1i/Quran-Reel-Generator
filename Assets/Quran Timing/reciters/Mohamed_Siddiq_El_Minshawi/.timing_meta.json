@@ -1,0 +1,9 @@
+{
+  "reciter_id": "minshawi",
+  "reciter_name": "Sheikh Mohamed Siddiq El-Minshawi",
+  "edition_id": "mp3quran-minshawi-murattal-r1",
+  "mp3quran_reciter_id": 112,
+  "mp3quran_read_id": 112,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/muhammad-minshawi/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=112"
+}

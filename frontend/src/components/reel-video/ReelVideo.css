@@ -1,0 +1,826 @@
+/* CapCut / TikTok-style unified 9:16 Video Studio — aligns cleanly with left column */
+.video-studio-card {
+  flex: 1;
+  width: 100%;
+  padding: 16px 16px 14px;
+  background: linear-gradient(180deg, #fffdf9 0%, #f8f2e6 100%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 17px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.vs-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vs-header h3 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.vs-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vs-icon-pill {
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  background: #fffdf9;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.vs-icon-pill:hover {
+  border-color: var(--gold);
+  color: var(--gold-deep);
+}
+
+/* Stage holding 9:16 video + wide floating pop-up tray — fills right card height cleanly */
+.vs-stage {
+  position: relative;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 440px;
+  padding: 4px 0;
+}
+
+.preview-frame-9-16 {
+  position: relative;
+  height: 100%;
+  min-height: 440px;
+  max-height: 700px;
+  width: auto;
+  max-width: 100%;
+  flex-shrink: 0;
+  margin: 0 auto;
+  aspect-ratio: 9 / 16;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-primary);
+  border: 1.5px solid var(--border-strong);
+  box-shadow: 0 12px 28px rgba(84, 63, 34, 0.22);
+  cursor: pointer;
+}
+
+/* Compact live playback scrub bar below the 9:16 stage */
+.vs-player-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #f5eedf;
+  border: 1px solid var(--border-subtle);
+}
+
+.vs-play-btn {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-bright);
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  font-size: 12px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.14s ease, transform 0.1s ease;
+}
+
+.vs-play-btn.is-playing {
+  background: var(--success-bg);
+  border-color: var(--sage-soft);
+  color: #fffdf8;
+}
+
+.vs-play-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.vs-scrub-slider {
+  flex: 1;
+  min-width: 0;
+  height: 4px;
+  margin: 0;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+
+.vs-time-label {
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.preview-media,
+.preview-overlay-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.preview-overlay-img {
+  pointer-events: none;
+  animation: none !important;
+  will-change: opacity;
+}
+
+.vs-vol-control {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 15;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 6px;
+  border-radius: 999px;
+  background: rgba(25, 22, 16, 0.42);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.vs-vol-control.is-open {
+  padding: 3px 8px;
+}
+
+.vs-vol-slider {
+  width: 76px;
+  height: 4px;
+  margin: 0;
+  accent-color: #e4be63;
+  cursor: pointer;
+}
+
+.vs-vol-btn {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #fffdf8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.vs-vol-btn.is-muted {
+  color: #f7d983;
+}
+
+.preview-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 18px;
+  color: #c9bfae;
+  font-size: 13px;
+}
+
+/* Live CSS approximations for motion effects */
+.preview-frame-9-16 .preview-media {
+  transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.preview-frame-9-16.effect-soft_focus .preview-media {
+  transform: scale(1.04);
+}
+
+.preview-frame-9-16.effect-slow_zoom .preview-media {
+  transform-origin: center center;
+  will-change: transform;
+  animation: vsSlowZoom 6s ease-in-out infinite alternate;
+}
+
+.preview-frame-9-16.effect-pan .preview-media {
+  transform-origin: center center;
+  will-change: transform;
+  animation: vsSlowPan 7s ease-in-out infinite alternate;
+}
+
+.vs-vignette-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, transparent 48%, rgba(0, 0, 0, 0.68) 100%);
+}
+
+@keyframes vsSlowZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.22); }
+}
+
+@keyframes vsSlowPan {
+  0% { transform: scale(1.18) translateX(-6%); }
+  100% { transform: scale(1.18) translateX(6%); }
+}
+
+/* Compact frosted-glass pop-up option tray anchored at bottom of preview */
+.vs-tray {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 4px;
+  z-index: 25;
+  background: rgba(255, 253, 247, 0.94);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  backdrop-filter: blur(16px) saturate(145%);
+  border: 1.5px solid var(--border-strong);
+  border-radius: 13px;
+  padding: 8px 10px 10px;
+  box-shadow: 0 -6px 24px rgba(84, 63, 34, 0.18);
+  animation: vsTrayPop 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes vsTrayPop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vs-tray-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.vs-tray-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+}
+
+.vs-tray-close {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1px solid var(--border-subtle);
+  background: #f4ecdc;
+  color: var(--text-primary);
+  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-tray-close:hover {
+  border-color: var(--gold);
+  background: #efe3cb;
+}
+
+/* Sleek single-row horizontal scrollable strip so tray stays small */
+.vs-tray-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 3px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196, 146, 50, 0.55) transparent;
+}
+
+.vs-tray-grid.vs-tray-5 {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  overflow-x: visible;
+}
+
+.vs-chip {
+  position: relative;
+  flex: 0 0 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 7px 4px 6px;
+  border-radius: 9px;
+  border: 1px solid var(--border-subtle);
+  background: #fffdf9;
+  color: var(--text-primary);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+  transition: border-color 0.14s ease, background 0.14s ease, box-shadow 0.14s ease;
+}
+
+.vs-chip:hover {
+  border-color: var(--gold);
+  background: #f8f1e2;
+}
+
+.vs-chip.active {
+  border-color: var(--sage);
+  background: rgba(91, 120, 70, 0.14);
+  color: var(--sage-deep);
+  box-shadow: inset 0 0 0 1px rgba(91, 120, 70, 0.35);
+}
+
+.vs-chip-check {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: #fffdf8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.vs-chip-check svg {
+  width: 10px;
+  height: 10px;
+}
+
+.vs-chip-icon {
+  width: 17px;
+  height: 17px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-deep);
+}
+
+.vs-chip.active .vs-chip-icon {
+  color: var(--sage-deep);
+}
+
+.vs-chip-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vs-chip-tag {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--gold-deep);
+}
+
+.vs-backdrop-swatch {
+  position: relative;
+  width: 24px;
+  height: 15px;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+  background-color: #ece6da;
+  background-image:
+    linear-gradient(45deg, #c2b9a7 25%, transparent 25%),
+    linear-gradient(-45deg, #c2b9a7 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #c2b9a7 75%),
+    linear-gradient(-45deg, transparent 75%, #c2b9a7 75%);
+  background-size: 6px 6px;
+  background-position: 0 0, 0 3px, 3px -3px, -3px 0;
+}
+
+.vs-backdrop-fill {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.vs-colour-dot {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(56, 43, 29, 0.35);
+}
+
+/* Media picker strip inside tray */
+.vs-tray-media {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 3px;
+  scrollbar-width: thin;
+}
+
+.vs-upload-chip {
+  flex: 0 0 64px;
+  min-height: 64px;
+  border-style: dashed;
+  border-color: var(--gold);
+}
+
+.vs-media-chip {
+  flex: 0 0 54px;
+  height: 64px;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--border-subtle);
+  background: var(--bg-primary);
+  position: relative;
+  display: block;
+}
+
+.vs-media-chip.active {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 2px rgba(91, 120, 70, 0.28);
+}
+
+.vs-media-chip video,
+.vs-media-chip img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vs-media-chip span {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 2px 4px;
+  font-size: 9px;
+  background: rgba(34, 28, 20, 0.8);
+  color: #fffdf8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CapCut / TikTok-style bottom icon dock */
+.vs-dock {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 3px;
+  padding: 7px 4px;
+  border-radius: 12px;
+  background: #f5eedf;
+  border: 1px solid var(--border-subtle);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.vs-dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 7px 1px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: clamp(9.5px, 0.85vw, 11px);
+  font-weight: 600;
+  min-width: 0;
+  transition: all 0.14s ease;
+}
+
+.vs-dock-btn:hover {
+  background: rgba(200, 155, 60, 0.14);
+  color: var(--text-primary);
+}
+
+.vs-dock-btn.active {
+  background: #fffdf9;
+  border-color: var(--gold);
+  color: var(--sage-deep);
+  box-shadow: 0 2px 8px rgba(84, 63, 34, 0.08);
+}
+
+.vs-dock-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-dock-icon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vs-dock-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Approve / Reset buttons */
+.vs-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.vs-approve-btn {
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  border: 1px solid var(--gold-bright);
+  box-shadow: var(--shadow-gold);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.vs-approve-btn:hover:not(:disabled) {
+  background: var(--gold-gradient-hover);
+}
+
+.vs-approve-btn.is-approved {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-border);
+  box-shadow: 0 4px 12px rgba(70, 110, 54, 0.28);
+}
+
+.vs-approve-btn.is-approved:hover:not(:disabled) {
+  filter: brightness(1.05);
+}
+
+.vs-reset-btn {
+  background: #f5eedf;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  padding: 9px 12px;
+  font-size: 13px;
+}
+
+.vs-reset-btn:hover:not(:disabled) {
+  background: #ece1cb;
+}
+
+.vs-export-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.vs-export-btn {
+  position: relative;
+  overflow: hidden;
+  min-width: min(210px, 100%);
+  max-width: 100%;
+  padding: 10px 26px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 10px;
+  background: var(--gold-gradient);
+  color: var(--text-on-gold);
+  border: 1px solid var(--gold-bright);
+  box-shadow: var(--shadow-gold);
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.vs-export-btn.is-exporting {
+  background: #ede3cd;
+  color: var(--text-primary);
+  border-color: var(--gold);
+  opacity: 1;
+}
+
+.vs-export-btn-fill {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  background: var(--gold-gradient);
+  transition: width 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.vs-export-btn-label {
+  position: relative;
+  z-index: 1;
+}
+
+.vs-cancel-export-btn {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  border-radius: 10px;
+  background: #fff5f5;
+  color: #8c2632;
+  border: 1px solid rgba(168, 60, 72, 0.42);
+  white-space: nowrap;
+}
+
+.vs-cancel-export-btn:hover {
+  background: #fde8e8;
+  border-color: #a83c48;
+}
+
+.vs-reveal-inline-btn {
+  padding: 10px 14px;
+  font-size: 12.5px;
+  font-weight: 700;
+  border-radius: 10px;
+  background: #eef5e8;
+  color: var(--sage-deep);
+  border: 1px solid rgba(91, 120, 70, 0.45);
+  white-space: nowrap;
+}
+
+.vs-reveal-inline-btn:hover {
+  background: #e1edd6;
+  border-color: var(--sage);
+}
+
+.vs-export-btn:hover:not(:disabled) {
+  background: var(--gold-gradient-hover);
+}
+
+.vs-export-btn.is-done {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border-color: var(--success-border);
+  box-shadow: 0 4px 12px rgba(70, 110, 54, 0.28);
+  opacity: 1;
+}
+
+.vs-export-btn.is-done:hover:not(:disabled) {
+  background: var(--success-bg);
+  filter: brightness(1.06);
+}
+
+.vs-export-progress {
+  height: 6px;
+  border-radius: 999px;
+  background: #eae0cc;
+  overflow: hidden;
+}
+
+.vs-export-bar {
+  height: 100%;
+  background: var(--gold);
+  transition: width 0.25s ease;
+}
+
+.vs-status-note {
+  font-size: 12px;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.vs-status-note.is-ok {
+  background: rgba(91, 120, 70, 0.14);
+  color: var(--sage-deep);
+}
+
+.vs-status-note.is-err {
+  background: rgba(168, 60, 72, 0.14);
+  color: #8c2632;
+}
+
+.vs-export-done {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: rgba(91, 120, 70, 0.12);
+  border: 1px solid rgba(91, 120, 70, 0.35);
+  color: var(--sage-deep);
+}
+
+.vs-export-done-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 180px;
+}
+
+.vs-export-done-badge {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--sage-deep);
+}
+
+.vs-export-done-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vs-reveal-btn {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  background: #fffdf9;
+  color: var(--sage-deep);
+  border: 1px solid rgba(91, 120, 70, 0.45);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.vs-reveal-btn:hover {
+  background: #eef4e8;
+  border-color: var(--sage);
+}
+
+.vs-text-options {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 4px 2px;
+  color: var(--text-primary);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.vs-text-options label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: clamp(10.5px, 0.86vw, 11.8px);
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.vs-text-options input {
+  width: 13px;
+  height: 13px;
+  accent-color: var(--sage);
+  flex-shrink: 0;
+}
+
+.vs-reset-inline {
+  margin-inline-start: auto;
+  padding: 4px 7px;
+  gap: 4px;
+  font-size: clamp(10.5px, 0.84vw, 11.4px);
+  border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}

@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Developer. Mohamed Ali — https://github.com/devMohamedA1i" />
+  <title>Quran Reel Generator — User Guide / دليل الاستخدام</title>
+  <style>
+    @font-face {
+      font-family: 'UthmanicHafs';
+      src: url('./Project Development/Assets/fonts/UthmanicHafs1Ver18.ttf') format('truetype');
+      font-display: swap;
+    }
+
+    :root {
+      --bg-primary: #f6f1e7;
+      --bg-deep: #ede4d3;
+      --bg-surface: #fffdf9;
+      --sage: #5b7846;
+      --sage-deep: #445c33;
+      --sage-tint: rgba(91, 120, 70, 0.10);
+      --gold-bright: #ffe184;
+      --gold: #f2bc38;
+      --gold-deep: #b88212;
+      --gold-gradient: linear-gradient(180deg, #ffe285 0%, #f4bc3a 55%, #e2a21e 100%);
+      --text-primary: #382b1d;
+      --text-secondary: #5c4e3d;
+      --text-muted: #847563;
+      --border-subtle: rgba(91, 120, 70, 0.22);
+      --border-strong: rgba(91, 120, 70, 0.45);
+      --shadow-card: 0 10px 30px rgba(64, 58, 44, 0.09);
+      --shadow-shot: 0 14px 36px rgba(56, 43, 29, 0.14);
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      --font-arabic-ui: 'Geeza Pro', 'Arabic Typesetting', 'Noto Naskh Arabic', Tahoma, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--text-primary);
+      background:
+        radial-gradient(circle at top right, rgba(242, 188, 56, 0.16), transparent 44%),
+        radial-gradient(circle at bottom left, rgba(91, 120, 70, 0.09), transparent 42%),
+        var(--bg-primary);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    html[lang="ar"] body {
+      font-family: var(--font-arabic-ui), var(--font-sans);
+    }
+
+    a { color: var(--sage-deep); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Sticky Top Navbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(251, 248, 241, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 2px 14px rgba(64, 58, 44, 0.06);
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 11px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.06rem;
+      color: var(--sage-deep);
+    }
+
+    .brand-icon {
+      height: 36px;
+      width: auto;
+      background: transparent;
+      border: none;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-icon img { height: 100%; width: auto; object-fit: contain; display: block; }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      padding: 6px 11px;
+      border-radius: 8px;
+      font-size: 0.87rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      background: var(--sage-tint);
+      color: var(--sage-deep);
+      text-decoration: none;
+    }
+
+    /* EN / AR Switcher matching the app */
+    .lang-switch {
+      display: inline-flex;
+      background: #f1e9d8;
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 2px;
+    }
+
+    .lang-switch button {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 5px 11px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .lang-switch button.active {
+      background: var(--gold-gradient);
+      color: #2a1d08;
+    }
+
+    /* Hero Banner */
+    .hero {
+      max-width: 1180px;
+      margin: 26px auto 0;
+      padding: 0 24px;
+    }
+
+    .hero-card {
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1.5px solid var(--border-strong);
+      background: linear-gradient(180deg, #fffdf9 0%, #f6efe1 100%);
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-banner-wrap {
+      width: 100%;
+      background: linear-gradient(90deg, #f2eee8 0%, #f7f4ef 50%, #f0ebe3 100%);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-banner-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-body {
+      padding: 32px 36px 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 9px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid var(--border-subtle);
+      background: #fffdf9;
+      color: var(--sage-deep);
+    }
+
+    .pill.gold {
+      background: rgba(242, 188, 56, 0.18);
+      border-color: rgba(201, 142, 20, 0.45);
+      color: #7c5206;
+    }
+
+    .hero-body h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+      line-height: 1.28;
+      color: var(--text-primary);
+    }
+
+    .hero-body p {
+      margin: 0 0 18px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, #567d40 0%, #3f602d 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: 1px solid #6b9453;
+      box-shadow: 0 4px 14px rgba(63, 96, 45, 0.25);
+    }
+
+    .btn-primary:hover { text-decoration: none; filter: brightness(1.06); }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: 10px;
+      background: var(--gold-gradient);
+      color: #2a1d08;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: 1px solid var(--gold-bright);
+      box-shadow: 0 4px 14px rgba(226, 162, 30, 0.28);
+    }
+
+    .btn-gold:hover { text-decoration: none; filter: brightness(1.04); }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .stat-box {
+      padding: 12px 14px;
+      border-radius: 13px;
+      background: #fffdf9;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .stat-val {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--sage-deep);
+      line-height: 1.18;
+    }
+
+    .stat-lbl {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+      font-weight: 600;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 24px 72px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--sage);
+    }
+
+    html[lang="ar"] .section-kicker {
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.18rem, 1.8vw, 1.42rem);
+      color: var(--text-primary);
+    }
+
+    .section-head p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      max-width: 740px;
+    }
+
+    /* Screenshot Frame */
+    .shot-frame {
+      background: linear-gradient(180deg, #fffdf9 0%, #f5eee0 100%);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 12px;
+      box-shadow: var(--shadow-shot);
+      overflow: hidden;
+    }
+
+    .shot-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 11px;
+      border: 1px solid rgba(91, 120, 70, 0.16);
+      cursor: zoom-in;
+      transition: transform 0.2s ease;
+    }
+
+    .shot-frame img:hover { transform: scale(1.005); }
+
+    .shot-caption {
+      margin-top: 10px;
+      padding: 0 4px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Step Cards */
+    .step-card {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 28px;
+      align-items: center;
+      padding: 26px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f8f2e6 100%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+
+    .step-card.reverse {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    }
+
+    .step-card.reverse .step-visual { order: -1; }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 9px;
+      background: var(--gold-gradient);
+      color: #2a1d08;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .step-text h3 {
+      margin: 0 0 8px;
+      font-size: 1.12rem;
+      color: var(--text-primary);
+    }
+
+    .step-text p {
+      margin: 0 0 12px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .feature-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .feature-list li {
+      position: relative;
+      padding-inline-start: 24px;
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      position: absolute;
+      inset-inline-start: 0;
+      top: 2px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: var(--sage-tint);
+      color: var(--sage-deep);
+      font-size: 11px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-list strong { color: var(--text-primary); }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      padding: 1px 5px;
+      border-radius: 5px;
+      background: rgba(91, 120, 70, 0.11);
+      color: var(--sage-deep);
+    }
+
+    /* Grid Cards */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info-card {
+      padding: 20px;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f8f2e6 100%);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+    }
+
+    .info-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--sage-tint);
+      color: var(--sage-deep);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .info-card h4 { margin: 0 0 6px; font-size: 1rem; color: var(--text-primary); }
+    .info-card p { margin: 0; font-size: 0.88rem; color: var(--text-secondary); }
+
+    /* License Section */
+    .license-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .license-card {
+      padding: 26px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f7f0e2 100%);
+      border: 1.5px solid var(--border-strong);
+      box-shadow: var(--shadow-card);
+    }
+
+    .license-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      color: var(--sage-deep);
+    }
+
+    .license-card p {
+      margin: 0 0 12px;
+      font-size: 0.93rem;
+      color: var(--text-secondary);
+    }
+
+    .license-box {
+      padding: 14px 16px;
+      border-radius: 11px;
+      background: #f3ecdd;
+      border: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      color: var(--text-primary);
+    }
+
+    .license-box ul { margin: 8px 0 0; padding-inline-start: 18px; }
+    .license-box li { margin-bottom: 4px; }
+
+    /* Quick Start — clean warm ivory & champagne-gold card */
+    .quickstart-card {
+      padding: 26px 28px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f7f0e2 100%);
+      border: 1.5px solid var(--border-strong);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .quickstart-head {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .quickstart-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--sage-deep);
+    }
+
+    .quickstart-card .qs-lead {
+      margin: 0;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      max-width: 780px;
+    }
+
+    .qs-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .qs-step-tile {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 13px;
+      background: #fffdf9;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .qs-step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--gold-gradient);
+      color: #2a1d08;
+      font-size: 0.84rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(226, 162, 30, 0.25);
+    }
+
+    .qs-step-body strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .qs-step-body span {
+      display: block;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 760px) {
+      .qs-steps-grid { grid-template-columns: 1fr; }
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px 42px;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      border-top: 1px solid var(--border-subtle);
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    /* Lightbox with Zoom In / Zoom Out */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(28, 22, 14, 0.88);
+      backdrop-filter: blur(6px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 24px 24px;
+      overflow: auto;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-toolbar {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 110;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 8px;
+      border-radius: 10px;
+      background: rgba(42, 33, 22, 0.92);
+      border: 1px solid rgba(242, 188, 56, 0.4);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      direction: ltr;
+    }
+
+    .lightbox-toolbar button {
+      background: rgba(255, 253, 249, 0.12);
+      border: 1px solid rgba(255, 253, 249, 0.2);
+      color: #fffdf9;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      min-width: 32px;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .lightbox-toolbar button:hover {
+      background: rgba(242, 188, 56, 0.28);
+      border-color: rgba(242, 188, 56, 0.65);
+    }
+
+    .lightbox-zoom-pct {
+      color: #ffe285;
+      font-size: 12px;
+      font-weight: 700;
+      min-width: 44px;
+      text-align: center;
+    }
+
+    .lightbox-stage {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .lightbox img {
+      max-width: 94vw;
+      max-height: 86vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 226, 133, 0.45);
+      cursor: zoom-in;
+      transition: width 0.18s ease, max-width 0.18s ease, max-height 0.18s ease;
+      margin: auto;
+    }
+
+    .lightbox.is-zoomed img {
+      max-width: none;
+      max-height: none;
+      cursor: zoom-out;
+    }
+
+    .feedback-card {
+      margin-top: 8px;
+      padding: 22px 26px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f9f2e1 100%);
+      border: 1px solid rgba(201, 142, 20, 0.32);
+      text-align: center;
+      box-shadow: var(--shadow-card);
+    }
+
+    .feedback-card p {
+      margin: 0 auto 10px;
+      max-width: 760px;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    .feedback-dua {
+      margin: 10px auto 12px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--sage-deep);
+    }
+
+    .feedback-contact {
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+    }
+
+    .feedback-contact a {
+      color: var(--sage-deep);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 960px) {
+      .hero-body,
+      .step-card,
+      .step-card.reverse,
+      .license-grid,
+      .quickstart-card { grid-template-columns: 1fr; }
+      .step-card.reverse .step-visual { order: 0; }
+      .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 600px) {
+      .hero-body { padding: 22px 20px; }
+      .grid-4 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-icon">
+          <img src="./Project Development/static/quran-header-icon.png?v=3" alt="Quran Reel Generator icon" />
+        </span>
+        <span data-i18n="appName">Quran Reel Generator</span>
+      </div>
+
+      <div class="topbar-right">
+        <nav class="nav-links" aria-label="Guide navigation">
+          <a href="#overview" data-i18n="navOverview">Overview</a>
+          <a href="#steps" data-i18n="navSteps">How to Use</a>
+          <a href="#architecture" data-i18n="navHow">How It Works</a>
+          <a href="#license" data-i18n="navLicense">Open Source &amp; MP3Quran</a>
+          <a href="#quickstart" data-i18n="navStart">Quick Start</a>
+        </nav>
+
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" id="btnEn" class="active" aria-pressed="true">EN</button>
+          <button type="button" id="btnAr" aria-pressed="false">عربي</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-banner-wrap">
+        <img src="./Project Development/Assets/banner.png?v=24" alt="Quran Reel Generator banner" />
+      </div>
+
+      <div class="hero-body">
+        <div>
+          <div class="pill-row">
+            <span class="pill" data-i18n="pillMit">100% Free &amp; Open Source (MIT)</span>
+            <span class="pill gold" data-i18n="pillMp3">MP3Quran Free Quran Audio</span>
+            <span class="pill" data-i18n="pillLocal">100% Local · No Watermarks</span>
+          </div>
+          <h1 data-i18n="heroTitle">Create Synchronized 9:16 Quran Reels Locally in Minutes</h1>
+          <p data-i18n="heroDesc">
+            Quran Reel Generator is a free, open-source desktop web studio that pairs authentic Quran recitations with
+            verified Uthmani Arabic script and optional English translation — featuring a precision waveform editor,
+            smooth seamless looping backgrounds, live 9:16 preview with pause-aware dissolves, and 1-click MP4 export.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#steps" data-i18n="ctaGuide">Explore Step-by-Step Guide</a>
+            <a class="btn-gold" href="#license" data-i18n="ctaLicense">Open Source &amp; MP3Quran License</a>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-box">
+            <div class="stat-val" data-i18n="stat1Val">114</div>
+            <div class="stat-lbl" data-i18n="stat1Lbl">Complete Surahs &amp; 6,236 Ayahs</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" data-i18n="stat2Val">10</div>
+            <div class="stat-lbl" data-i18n="stat2Lbl">Renowned Quran Reciters</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" data-i18n="stat3Val">1-Click</div>
+            <div class="stat-lbl" data-i18n="stat3Lbl">Direct 720×1280 MP4 Export</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val" data-i18n="stat4Val">100% Free</div>
+            <div class="stat-lbl" data-i18n="stat4Lbl">Open Source · Zero Cloud Fees</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <!-- Overview -->
+    <section id="overview">
+      <div class="section-head">
+        <span class="section-kicker" data-i18n="ovKicker">Studio Overview</span>
+        <h2 data-i18n="ovTitle">Everything on One Clean Two-Column Workspace</h2>
+        <p data-i18n="ovDesc">
+          Pick your reciter and Surah on the left, trim the exact audio passage on the interactive waveform, style your
+          9:16 video live on the right, and export a ready-to-share MP4 in one click. Click any screenshot to enlarge.
+        </p>
+      </div>
+      <div class="shot-frame">
+        <img src="./Project Development/docs/guide_screenshots/01_full_workspace.jpg" alt="Quran Reel Generator full workspace" />
+        <div class="shot-caption">
+          <span data-i18n="ovCap">Left: Reciter, Surah, Auto-Rebalancing Reel Queue &amp; Waveform · Right: Live 9:16 Preview, CapCut-style Dock &amp; 1-Click Export.</span>
+          <span data-i18n="zoomHint">Click image to zoom</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step-by-step -->
+    <section id="steps" style="display:flex; flex-direction:column; gap:26px;">
+      <div class="section-head">
+        <span class="section-kicker" data-i18n="stKicker">Step-by-Step Guide</span>
+        <h2 data-i18n="stTitle">How to Use Quran Reel Generator</h2>
+        <p data-i18n="stDesc">Five simple steps from choosing a reciter to exporting your finished vertical Quran reel.</p>
+      </div>
+
+      <!-- Step 1 -->
+      <article class="step-card">
+        <div class="step-text">
+          <span class="step-badge" data-i18n="s1Badge">Step 1 · Quran Setup</span>
+          <h3 data-i18n="s1Title">Choose Your Quran Reciter</h3>
+          <p data-i18n="s1Desc">
+            Pick from 10 renowned reciters (Abdul Basit, Al-Minshawi, Al-Husary, Al-Afasy, Al-Sudais, Al-Shuraim,
+            Al-Muaiqly, Al-Ghamdi, Al-Dosari, and Al-Ajmi). The app downloads and verifies your local audio and Ayah
+            timings automatically.
+          </p>
+          <ul class="feature-list">
+            <li data-i18n-html="s1Li1"><strong>One-Click Setup:</strong> Download all 114 Surahs from MP3Quran locally if not already installed.</li>
+            <li data-i18n-html="s1Li2"><strong>Automatic Verification:</strong> Checks every Surah MP3, Quran text, and Ayah timing file automatically.</li>
+            <li data-i18n-html="s1Li3"><strong>100% Offline Ready:</strong> Once downloaded, everything runs privately on your computer with no internet needed.</li>
+          </ul>
+        </div>
+        <div class="step-visual">
+          <div class="shot-frame">
+            <img src="./Project Development/docs/guide_screenshots/02_reciter_dropdown.jpg" alt="Choose Quran Reciter dropdown" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="step-card reverse">
+        <div class="step-text">
+          <span class="step-badge" data-i18n="s2Badge">Step 2 · Surah &amp; Reel Queue</span>
+          <h3 data-i18n="s2Title">Select Any Surah &amp; Auto-Rebalancing Queue</h3>
+          <p data-i18n="s2Desc">
+            Open the themed <strong>Select Surah</strong> dropdown to jump to any of the 114 Surahs, clearly displaying
+            the Surah number, Arabic name, English name, and Ayah count (<em>286 Ayah</em> / <em>٢٨٦ آية</em>).
+          </p>
+          <ul class="feature-list">
+            <li data-i18n-html="s2Li1"><strong>Automatic Reel Queue:</strong> Long Surahs are neatly split into reel segments aligned to Ayah boundaries.</li>
+            <li data-i18n-html="s2Li2"><strong>Instant Auto-Rebalancing:</strong> Changing a reel's Start or End time automatically updates all surrounding reels with zero errors.</li>
+            <li data-i18n-html="s2Li3"><strong>Seamless Switching:</strong> Click any reel in the queue to preview and edit it instantly.</li>
+          </ul>
+        </div>
+        <div class="step-visual">
+          <div class="shot-frame">
+            <img src="./Project Development/docs/guide_screenshots/03_surah_dropdown.jpg" alt="Select Surah dropdown" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="step-card">
+        <div class="step-text">
+          <span class="step-badge" data-i18n="s3Badge">Step 3 · Precision Audio Waveform</span>
+          <h3 data-i18n="s3Title">Trim Effortlessly on the Interactive Waveform</h3>
+          <p data-i18n="s3Desc">
+            Inspect the symmetrical, centered blue waveform with 15-minute subdivisions, clean bottom Ayah numbers, and
+            a refined Full Surah scrubber starting at a comfortable 20% default volume.
+          </p>
+          <ul class="feature-list">
+            <li data-i18n-html="s3Li1"><strong>Draggable S / E Handles:</strong> Drag the sage-green <strong>S</strong> (Start) and orange <strong>E</strong> (End) handles directly on the waveform, or click the matching <strong>Start</strong> / <strong>End</strong> buttons at the playhead.</li>
+            <li data-i18n-html="s3Li2"><strong>Snap to Closest Pause:</strong> Detected pauses appear in soft blue when zoomed in; click <strong>Snap to closest Pause</strong> for clean cuts that never clip a word.</li>
+            <li data-i18n-html="s3Li3"><strong>Auto-Saving Ranges:</strong> Every boundary adjustment saves automatically and updates the live 9:16 preview immediately.</li>
+          </ul>
+        </div>
+        <div class="step-visual">
+          <div class="shot-frame">
+            <img src="./Project Development/docs/guide_screenshots/04_waveform_editor.jpg" alt="Interactive audio waveform editor" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="step-card reverse">
+        <div class="step-text">
+          <span class="step-badge" data-i18n="s4Badge">Step 4 · 9:16 Video Studio &amp; 1-Click Export</span>
+          <h3 data-i18n="s4Title">Style Your Reel Live &amp; Export in One Click</h3>
+          <p data-i18n="s4Desc">
+            Play your vertical 9:16 preview right beside the waveform with smooth crossfading background loops, calm
+            text dissolves, and automatic inter-ayah pause hiding — then export directly with zero approval gates.
+          </p>
+          <ul class="feature-list">
+            <li data-i18n-html="s4Li1"><strong>Organized Media &amp; Smooth Loops:</strong> Starter backgrounds (<code>Sample1</code>–<code>Sample3</code>) are built in with thumbnail previews, custom upload support, and seamless crossfade looping in both preview and export.</li>
+            <li data-i18n-html="s4Li2"><strong>Stackable Multi-Effects:</strong> Combine fade speed, Zoom/Pan motion, and cinematic color looks (Warm, Golden, Night, Vignette, Soft Focus) with green checkmarks on active choices. Click outside any tray to close it.</li>
+            <li data-i18n-html="s4Li3"><strong>Typography &amp; Overlays:</strong> Customize <strong>Size</strong> (default Medium), <strong>Position</strong>, <strong>Backdrop</strong>, <strong>Colour</strong>, and toggle <strong>Show surah name</strong> &amp; <strong>Show ayah number</strong> (in both Arabic and English).</li>
+            <li data-i18n-html="s4Li4"><strong>1-Click Green Export Reel:</strong> Always ready — saves your latest audio range &amp; video settings and renders a crisp 720×1280 H.264 + AAC MP4 straight into <strong>Exported Reels</strong>.</li>
+          </ul>
+        </div>
+        <div class="step-visual">
+          <div class="shot-frame">
+            <img src="./Project Development/docs/guide_screenshots/05_video_studio.jpg" alt="9:16 Video Studio with multi-select effects" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="step-card">
+        <div class="step-text">
+          <span class="step-badge" data-i18n="s5Badge">Step 5 · Arabic &amp; English (EN / عربي)</span>
+          <h3 data-i18n="s5Title">Full English &amp; Arabic Support</h3>
+          <p data-i18n-html="s5Desc">
+            Toggle <strong>EN / عربي</strong> in the top bar anytime. Both the workspace interface and your exported
+            video overlay adapt seamlessly:
+          </p>
+          <ul class="feature-list">
+            <li data-i18n-html="s5Li1"><strong>Arabic Mode (عربي):</strong> Renders authentic KFGQPC Uthmani Hafs v18 Arabic script with optional Arabic Surah name and ornate Ayah markers <code>﴿١﴾</code>.</li>
+            <li data-i18n-html="s5Li2"><strong>English Mode (EN):</strong> Pairs the verified Arabic verse with its complete English translation, plus both Arabic &amp; English Surah names and Ayah numbers.</li>
+            <li data-i18n-html="s5Li3"><strong>Scripture Integrity:</strong> Arabic verses are never truncated, altered, or AI-rewritten.</li>
+          </ul>
+        </div>
+        <div class="step-visual">
+          <div class="shot-frame">
+            <img src="./Project Development/docs/guide_screenshots/06_arabic_mode.jpg" alt="Arabic RTL studio interface" />
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- How Everything Works -->
+    <section id="architecture">
+      <div class="section-head">
+        <span class="section-kicker" data-i18n="hwKicker">Under the Hood</span>
+        <h2 data-i18n="hwTitle">How Everything Works Locally</h2>
+        <p data-i18n="hwDesc">Engineered for scriptural accuracy, smooth visual craft, and 100% local privacy.</p>
+      </div>
+      <div class="grid-4">
+        <div class="info-card">
+          <div class="info-icon">🖥️</div>
+          <h4 data-i18n="hw1T">100% Local Processing</h4>
+          <p data-i18n="hw1D">Runs directly on your machine using Python/Flask + React + FFmpeg. No accounts, no cloud uploads, no watermarks, and no limits.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📖</div>
+          <h4 data-i18n="hw2T">Authentic RAQM Shaping</h4>
+          <p data-i18n="hw2D">Every verse is rasterized via Pillow + HarfBuzz/RAQM using KFGQPC Uthmani Hafs v18 so diacritics (tashkeel) render crisply.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🎙️</div>
+          <h4 data-i18n="hw3T">Inter-Ayah Pause Engine</h4>
+          <p data-i18n="hw3D">Detects silent pauses strictly between the end of one Ayah and the start of the next so text dissolves calmly and never flickers mid-ayah.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">🎞️</div>
+          <h4 data-i18n="hw4T">Seamless Loop &amp; Audio</h4>
+          <p data-i18n="hw4D">Source recitations are never speed-stretched. Video backgrounds crossfade seamlessly across loops at 720×1280 24fps H.264/AAC.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Open Source & License -->
+    <section id="license">
+      <div class="section-head">
+        <span class="section-kicker" data-i18n="licKicker">Open Source &amp; Content Rights</span>
+        <h2 data-i18n="licTitle">Free for All Users — Open Source &amp; MP3Quran License</h2>
+        <p data-i18n="licDesc">
+          Quran Reel Generator is open-source and completely free for everyone to use, share, and benefit from — with
+          free-to-use Quran audio sourced from MP3Quran.
+        </p>
+      </div>
+
+      <div class="license-grid">
+        <div class="license-card">
+          <h3 data-i18n="mitTitle">📜 Open Source Software — MIT License</h3>
+          <p data-i18n-html="mitDesc">
+            The application source code is <strong>100% free and open source</strong> under the permissive
+            <strong>MIT License</strong>. Anyone may download, use, customize, and share it freely.
+          </p>
+          <div class="license-box">
+            <strong data-i18n="mitBoxHead">What the MIT License grants you:</strong>
+            <ul>
+              <li data-i18n="mitLi1">Free to run personally, educationally, or for your community</li>
+              <li data-i18n="mitLi2">Free to inspect, modify, and contribute improvements</li>
+              <li data-i18n="mitLi3">Zero fees, zero watermarks, zero tracking</li>
+              <li data-i18n-html="mitLi4">Full license text included in <code>Project Development/LICENSE</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="license-card">
+          <h3 data-i18n="mp3Title">🕌 Free Quran Content — MP3Quran &amp; Text Sources</h3>
+          <p data-i18n-html="mp3Desc">
+            Quran recitations are provided under free-to-use Quran content sharing from
+            <strong>MP3Quran (mp3quran.net)</strong>, paired with verified Quranic script and translation datasets.
+          </p>
+          <div class="license-box">
+            <strong data-i18n="mp3BoxHead">Included Quran Content Sources &amp; Attribution:</strong>
+            <ul>
+              <li data-i18n-html="mp3Li1"><strong>Recitation Audio:</strong> Free-to-use Quran recitations from <strong>MP3Quran</strong> (<code>mp3quran.net</code>) downloaded locally on demand.</li>
+              <li data-i18n-html="mp3Li2"><strong>Arabic Script &amp; Font:</strong> Verified KFGQPC Uthmani Hafs v18 text &amp; font (preserve verbatim; never alter scripture).</li>
+              <li data-i18n-html="mp3Li3"><strong>English Translation:</strong> Saheeh International via <strong>QuranEnc.com</strong> (Noor International Center) — attribution automatically embedded in exported MP4 metadata.</li>
+              <li data-i18n-html="mp3Li4"><strong>Background Media:</strong> Use the included free backgrounds or import your own royalty-free videos and images.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simple Standalone Quick Start -->
+    <section id="quickstart">
+      <div class="quickstart-card">
+        <div class="quickstart-head">
+          <h3 data-i18n="qsTitle">Simple Standalone App — Ready in Seconds</h3>
+          <p class="qs-lead" data-i18n-html="qsDesc">
+            No technical setup, no terminal, and no extra folders to manage — install once and start creating Quran reels right away.
+          </p>
+        </div>
+        <div class="qs-steps-grid">
+          <div class="qs-step-tile">
+            <span class="qs-step-num" data-i18n="qsN1">1</span>
+            <div class="qs-step-body">
+              <strong data-i18n="qsT1">Install in One Step</strong>
+              <span data-i18n-html="qsD1">Open <code>Quran-Reel-Generator.dmg</code> on Mac and drag the app to <strong>Applications</strong>, or unzip and run the Windows <code>.exe</code>.</span>
+            </div>
+          </div>
+          <div class="qs-step-tile">
+            <span class="qs-step-num" data-i18n="qsN2">2</span>
+            <div class="qs-step-body">
+              <strong data-i18n="qsT2">Try Immediately</strong>
+              <span data-i18n-html="qsD2">Surah Al-Fatihah for all 10 reciters and starter backgrounds (<code>Sample1</code>–<code>Sample3</code>) are built in out of the box.</span>
+            </div>
+          </div>
+          <div class="qs-step-tile">
+            <span class="qs-step-num" data-i18n="qsN3">3</span>
+            <div class="qs-step-body">
+              <strong data-i18n="qsT3">Unlock All 114 Surahs</strong>
+              <span data-i18n-html="qsD3">Click <strong>Download Quran Audio (114 Surahs)</strong> inside the app, or click <strong>Select Audio Folder</strong> if you already have audio saved.</span>
+            </div>
+          </div>
+          <div class="qs-step-tile">
+            <span class="qs-step-num" data-i18n="qsN4">4</span>
+            <div class="qs-step-body">
+              <strong data-i18n="qsT4">Find Your Exported Reels</strong>
+              <span data-i18n-html="qsD4">Click <strong>Exported Reels</strong> in the top bar anytime (or <strong>Show in Finder</strong> after export) to open your finished MP4 videos directly.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback & Du'a Note -->
+    <section id="feedback">
+      <div class="feedback-card">
+        <p data-i18n="feedbackNote">
+          If you notice anything not working correctly, or if you think I made a mistake in any part of the app, please
+          don't hesitate to contact me to enlighten me — your feedback helps keep this tool accurate and beneficial for
+          everyone.
+        </p>
+        <div class="feedback-dua" data-i18n="feedbackDua">
+          Jazakum Allahu khayran wa ja'alahu fi mizan hasanatikum — جزاكم الله خيراً وجعله في ميزان حسناتكم
+        </div>
+        <div class="feedback-contact">
+          <span data-i18n="feedbackContactLabel">Contact / Feedback:</span>
+          <a href="mailto:dev.mohamed.ali1@gmail.com" dir="ltr">dev.mohamed.ali1@gmail.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div data-i18n="footerLine1">
+      Quran Reel Generator · Open Source (MIT License) · Free for All Users · Free Quran Audio via MP3Quran
+    </div>
+    <div data-i18n="footerLine2" style="margin-top: 3px;">
+      Please preserve the accuracy and dignity of the Holy Qur'an in every reel you share.
+    </div>
+    <div style="margin-top: 3px;">
+      <span data-i18n="footerAuthor">Produced by Developer. Mohamed Ali</span> |
+      <a href="https://github.com/devMohamedA1i" target="_blank" rel="noopener noreferrer" dir="ltr" style="color: inherit; text-decoration: underline;">https://github.com/devMohamedA1i</a>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-toolbar" id="lbToolbar">
+      <button type="button" id="lbZoomOut" aria-label="Zoom out">−</button>
+      <span class="lightbox-zoom-pct" id="lbZoomPct">100%</span>
+      <button type="button" id="lbZoomIn" aria-label="Zoom in">+</button>
+      <button type="button" id="lbZoomReset" aria-label="Reset zoom">1:1</button>
+      <button type="button" id="lbClose" aria-label="Close">✕</button>
+    </div>
+    <div class="lightbox-stage" id="lbStage">
+      <img id="lightboxImg" src="" alt="Enlarged screenshot" />
+    </div>
+  </div>
+
+  <script>
+    const COPY = {
+      en: {
+        appName: 'Quran Reel Generator',
+        navOverview: 'Overview',
+        navSteps: 'How to Use',
+        navHow: 'How It Works',
+        navLicense: 'Open Source & MP3Quran',
+        navStart: 'Quick Start',
+        pillMit: '100% Free & Open Source (MIT)',
+        pillMp3: 'MP3Quran Free Quran Audio',
+        pillLocal: '100% Local · No Watermarks',
+        heroTitle: 'Create Synchronized 9:16 Quran Reels Locally in Minutes',
+        heroDesc: 'Quran Reel Generator is a free, open-source desktop web studio that pairs authentic Quran recitations with verified Uthmani Arabic script and optional English translation — featuring a precision waveform editor, smooth seamless looping backgrounds, live 9:16 preview with pause-aware dissolves, and 1-click MP4 export.',
+        ctaGuide: 'Explore Step-by-Step Guide',
+        ctaLicense: 'Open Source & MP3Quran License',
+        stat1Val: '114',
+        stat1Lbl: 'Complete Surahs & 6,236 Ayahs',
+        stat2Val: '10',
+        stat2Lbl: 'Renowned Quran Reciters',
+        stat3Val: '1-Click',
+        stat3Lbl: 'Direct 720×1280 MP4 Export',
+        stat4Val: '100% Free',
+        stat4Lbl: 'Open Source · Zero Cloud Fees',
+        ovKicker: 'Studio Overview',
+        ovTitle: 'Everything on One Clean Two-Column Workspace',
+        ovDesc: 'Pick your reciter and Surah on the left, trim the exact audio passage on the interactive waveform, style your 9:16 video live on the right, and export a ready-to-share MP4 in one click. Click any screenshot to enlarge.',
+        ovCap: 'Left: Reciter, Surah, Auto-Rebalancing Reel Queue & Waveform · Right: Live 9:16 Preview, CapCut-style Dock & 1-Click Export.',
+        zoomHint: 'Click image to zoom',
+        stKicker: 'Step-by-Step Guide',
+        stTitle: 'How to Use Quran Reel Generator',
+        stDesc: 'Five simple steps from choosing a reciter to exporting your finished vertical Quran reel.',
+        s1Badge: 'Step 1 · Quran Setup',
+        s1Title: 'Choose Your Quran Reciter',
+        s1Desc: 'Pick from 10 renowned reciters (Abdul Basit, Al-Minshawi, Al-Husary, Al-Afasy, Al-Sudais, Al-Shuraim, Al-Muaiqly, Al-Ghamdi, Al-Dosari, and Al-Ajmi). The app downloads and verifies your local audio and Ayah timings automatically.',
+        s1Li1: '<strong>One-Click Setup:</strong> Download all 114 Surahs from MP3Quran locally if not already installed.',
+        s1Li2: '<strong>Automatic Verification:</strong> Checks every Surah MP3, Quran text, and Ayah timing file automatically.',
+        s1Li3: '<strong>100% Offline Ready:</strong> Once downloaded, everything runs privately on your computer with no internet needed.',
+        s2Badge: 'Step 2 · Surah & Reel Queue',
+        s2Title: 'Select Any Surah & Auto-Rebalancing Queue',
+        s2Desc: 'Open the themed Select Surah dropdown to jump to any of the 114 Surahs, clearly displaying the Surah number, Arabic name, English name, and Ayah count (286 Ayah / ٢٨٦ آية).',
+        s2Li1: '<strong>Automatic Reel Queue:</strong> Long Surahs are neatly split into reel segments aligned to Ayah boundaries.',
+        s2Li2: '<strong>Instant Auto-Rebalancing:</strong> Changing a reel\'s Start or End time automatically updates all surrounding reels with zero errors.',
+        s2Li3: '<strong>Seamless Switching:</strong> Click any reel in the queue to preview and edit it instantly.',
+        s3Badge: 'Step 3 · Precision Audio Waveform',
+        s3Title: 'Trim Effortlessly on the Interactive Waveform',
+        s3Desc: 'Inspect the symmetrical, centered blue waveform with 15-minute subdivisions, clean bottom Ayah numbers, and a refined Full Surah scrubber starting at a comfortable 20% default volume.',
+        s3Li1: '<strong>Draggable S / E Handles:</strong> Drag the sage-green <strong>S</strong> (Start) and orange <strong>E</strong> (End) handles directly on the waveform, or click the matching <strong>Start</strong> / <strong>End</strong> buttons at the playhead.',
+        s3Li2: '<strong>Snap to Closest Pause:</strong> Detected pauses appear in soft blue when zoomed in; click <strong>Snap to closest Pause</strong> for clean cuts that never clip a word.',
+        s3Li3: '<strong>Auto-Saving Ranges:</strong> Every boundary adjustment saves automatically and updates the live 9:16 preview immediately.',
+        s4Badge: 'Step 4 · 9:16 Video Studio & 1-Click Export',
+        s4Title: 'Style Your Reel Live & Export in One Click',
+        s4Desc: 'Play your vertical 9:16 preview right beside the waveform with smooth crossfading background loops, calm text dissolves, and automatic inter-ayah pause hiding — then export directly with zero approval gates.',
+        s4Li1: '<strong>Organized Media & Smooth Loops:</strong> Starter backgrounds (<code>Sample1</code>–<code>Sample3</code>) are built in with thumbnail previews, custom upload support, and seamless crossfade looping in both preview and export.',
+        s4Li2: '<strong>Stackable Multi-Effects:</strong> Combine fade speed, Zoom/Pan motion, and cinematic color looks (Warm, Golden, Night, Vignette, Soft Focus) with green checkmarks on active choices. Click outside any tray to close it.',
+        s4Li3: '<strong>Typography & Overlays:</strong> Customize <strong>Size</strong> (default Medium), <strong>Position</strong>, <strong>Backdrop</strong>, <strong>Colour</strong>, and toggle <strong>Show surah name</strong> &amp; <strong>Show ayah number</strong> (in both Arabic and English).',
+        s4Li4: '<strong>1-Click Export Reel:</strong> Always ready — saves your latest audio range &amp; video settings, renders a crisp 720×1280 H.264 + AAC MP4 straight into <strong>Exported Reels</strong>, and turns green with <strong>✓ Exported successfully</strong> when done.',
+        s5Badge: 'Step 5 · Arabic & English (EN / عربي)',
+        s5Title: 'Full English & Arabic Support',
+        s5Desc: 'Toggle EN / عربي in the top bar anytime. Both the workspace interface and your exported video overlay adapt seamlessly:',
+        s5Li1: '<strong>Arabic Mode (عربي):</strong> Renders authentic KFGQPC Uthmani Hafs v18 Arabic script with optional Arabic Surah name and ornate Ayah markers <code>﴿١﴾</code>.',
+        s5Li2: '<strong>English Mode (EN):</strong> Pairs the verified Arabic verse with its complete English translation, plus both Arabic &amp; English Surah names and Ayah numbers.',
+        s5Li3: '<strong>Scripture Integrity:</strong> Arabic verses are never truncated, altered, or AI-rewritten.',
+        hwKicker: 'Under the Hood',
+        hwTitle: 'How Everything Works Locally',
+        hwDesc: 'Engineered for scriptural accuracy, smooth visual craft, and 100% local privacy.',
+        hw1T: '100% Local Processing',
+        hw1D: 'Runs directly on your machine using Python/Flask + React + FFmpeg. No accounts, no cloud uploads, no watermarks, and no limits.',
+        hw2T: 'Authentic RAQM Shaping',
+        hw2D: 'Every verse is rasterized via Pillow + HarfBuzz/RAQM using KFGQPC Uthmani Hafs v18 so diacritics (tashkeel) render crisply.',
+        hw3T: 'Inter-Ayah Pause Engine',
+        hw3D: 'Detects silent pauses strictly between the end of one Ayah and the start of the next so text dissolves calmly and never flickers mid-ayah.',
+        hw4T: 'Seamless Loop & Audio',
+        hw4D: 'Source recitations are never speed-stretched. Video backgrounds crossfade seamlessly across loops at 720×1280 24fps H.264/AAC.',
+        licKicker: 'Open Source & Content Rights',
+        licTitle: 'Free for All Users — Open Source & MP3Quran License',
+        licDesc: 'Quran Reel Generator is open-source and completely free for everyone to use, share, and benefit from — with free-to-use Quran audio sourced from MP3Quran.',
+        mitTitle: '📜 Open Source Software — MIT License',
+        mitDesc: 'The application source code is <strong>100% free and open source</strong> under the permissive <strong>MIT License</strong>. Anyone may download, use, customize, and share it freely.',
+        mitBoxHead: 'What the MIT License grants you:',
+        mitLi1: 'Free to run personally, educationally, or for your community',
+        mitLi2: 'Free to inspect, modify, and contribute improvements',
+        mitLi3: 'Zero fees, zero watermarks, zero tracking',
+        mitLi4: 'Full MIT license text is included inside the app and GitHub repository',
+        mp3Title: '🕌 Free Quran Content — MP3Quran & Text Sources',
+        mp3Desc: 'Quran recitations are provided under free-to-use Quran content sharing from <strong>MP3Quran (mp3quran.net)</strong>, paired with verified Quranic script and translation datasets.',
+        mp3BoxHead: 'Included Quran Content Sources & Attribution:',
+        mp3Li1: '<strong>Recitation Audio:</strong> Free-to-use Quran recitations from <strong>MP3Quran</strong> (<code>mp3quran.net</code>) downloaded locally on demand.',
+        mp3Li2: '<strong>Arabic Script &amp; Font:</strong> Verified KFGQPC Uthmani Hafs v18 text &amp; font (preserve verbatim; never alter scripture).',
+        mp3Li3: '<strong>English Translation:</strong> Saheeh International via <strong>QuranEnc.com</strong> (Noor International Center) — attribution automatically embedded in exported MP4 metadata.',
+        mp3Li4: '<strong>Background Media:</strong> Use the included free backgrounds or import your own royalty-free videos and images.',
+        qsTitle: 'Simple Standalone App — Ready in Seconds',
+        qsDesc: 'No technical setup, no terminal, and no extra folders to manage — install once and start creating Quran reels right away.',
+        qsN1: '1', qsT1: 'Install in One Step', qsD1: 'Open <code>Quran-Reel-Generator.dmg</code> on Mac and drag the app to <strong>Applications</strong>, or unzip and run the Windows <code>.exe</code>.',
+        qsN2: '2', qsT2: 'Try Immediately', qsD2: 'Surah Al-Fatihah for all 10 reciters and starter backgrounds (<code>Sample1</code>–<code>Sample3</code>) are built in out of the box.',
+        qsN3: '3', qsT3: 'Unlock All 114 Surahs', qsD3: 'Click <strong>Download Quran Audio (114 Surahs)</strong> inside the app, or click <strong>Select Audio Folder</strong> if you already have audio saved.',
+        qsN4: '4', qsT4: 'Find Your Exported Reels', qsD4: 'Click <strong>Exported Reels</strong> in the top bar anytime (or <strong>Show in Finder</strong> after export) to open your finished MP4 videos directly.',
+        feedbackNote: 'If you notice anything not working correctly, or if you think I made a mistake in any part of the app, please don\'t hesitate to contact me to enlighten me — your feedback helps keep this tool accurate and beneficial for everyone.',
+        feedbackDua: 'Jazakum Allahu khayran wa ja\'alahu fi mizan hasanatikum — جزاكم الله خيراً وجعله في ميزان حسناتكم',
+        feedbackContactLabel: 'Contact / Feedback:',
+        footerLine1: 'Quran Reel Generator · Open Source (MIT License) · Free for All Users · Free Quran Audio via MP3Quran',
+        footerLine2: 'Please preserve the accuracy and dignity of the Holy Qur\'an in every reel you share.',
+        footerAuthor: 'Produced by Developer. Mohamed Ali',
+      },
+      ar: {
+        appName: 'مولّد ريلز القرآن',
+        navOverview: 'نظرة عامة',
+        navSteps: 'طريقة الاستخدام',
+        navHow: 'كيف يعمل',
+        navLicense: 'المصدر المفتوح وترخيص MP3Quran',
+        navStart: 'التشغيل السريع',
+        pillMit: 'مجاني ١٠٠٪ ومفتوح المصدر (MIT)',
+        pillMp3: 'تلاوات مجانية من MP3Quran',
+        pillLocal: 'يعمل محلياً ١٠٠٪ · بدون علامات مائية',
+        heroTitle: 'أنشئ ريلز قرآنية عمودية 9:16 متزامنة مع التلاوة محلياً خلال دقائق',
+        heroDesc: 'مولّد ريلز القرآن هو استوديو مجاني ومفتوح المصدر يعمل على جهازك مباشرة، يجمع بين تلاوات قرآنية نقية ونص عثماني موثّق مع إمكانية إضافة الترجمة الإنجليزية — مع محرر موجة صوتية دقيق، وخلفيات فيديو متصلة التكرار بسلاسة، ومعاينة حية 9:16 وتصدير MP4 بضغطة زر واحدة.',
+        ctaGuide: 'تصفح دليل الاستخدام خطوة بخطوة',
+        ctaLicense: 'ترخيص المصدر المفتوح و MP3Quran',
+        stat1Val: '١١٤',
+        stat1Lbl: 'سورة كاملة و ٦٬٢٣٦ آية موثّقة',
+        stat2Val: '١٠',
+        stat2Lbl: 'قُرّاء من كبار قرّاء القرآن الكريم',
+        stat3Val: 'ضغطة زر',
+        stat3Lbl: 'تصدير مباشر بدقة 720×1280 MP4',
+        stat4Val: 'مجاني ١٠٠٪',
+        stat4Lbl: 'مفتوح المصدر · بدون اشتراكات سحابية',
+        ovKicker: 'نظرة عامة على الاستوديو',
+        ovTitle: 'كل ما تحتاجه في مساحة عمل واحدة منظمة',
+        ovDesc: 'اختر القارئ والسورة وقصّ المقطع الصوتي بدقة من اليسار، ونسّق فيديو 9:16 مع المعاينة الحية من اليمين، ثم صدّر الفيديو الجاهز بضغطة واحدة. اضغط على أي صورة لتكبيرها.',
+        ovCap: 'اليسار: اختيار القارئ، السورة، قائمة الريلز التلقائية، والموجة الصوتية · اليمين: المعاينة الحية 9:16، شريط التحرير، والتصدير المباشر.',
+        zoomHint: 'اضغط على الصورة للتكبير',
+        stKicker: 'دليل الاستخدام خطوة بخطوة',
+        stTitle: 'كيف تستخدم مولّد ريلز القرآن',
+        stDesc: 'خمس خطوات بسيطة من اختيار القارئ حتى تصدير الريل القرآني الجاهز للنشر.',
+        s1Badge: 'الخطوة ١ · إعداد القرآن',
+        s1Title: 'اختر قارئ القرآن الكريم',
+        s1Desc: 'اختر من بين ١٠ قرّاء مشهورين (عبد الباسط، المنشاوي، الحصري، العفاسي، السديس، الشريم، المعيقلي، الغامدي، الدوسري، والعجمي). يقوم البرنامج بتحميل ملفات الصوت والتحقق من توقيت الآيات تلقائياً.',
+        s1Li1: '<strong>تحميل بضغطة واحدة:</strong> حمّل جميع السور الـ ١١٤ من MP3Quran محلياً على جهازك إذا لم تكن محمّلة مسبقاً.',
+        s1Li2: '<strong>تحقق تلقائي شامل:</strong> يفحص البرنامج كل ملف صوتي ونص القرآن وملفات توقيت الآيات تلقائياً.',
+        s1Li3: '<strong>يعمل بدون إنترنت:</strong> بعد التحميل، يعمل كل شيء محلياً على جهازك بخصوصية تامة ودون الحاجة للإنترنت.',
+        s2Badge: 'الخطوة ٢ · السورة وقائمة الريلز',
+        s2Title: 'اختر السورة مع إعادة ترتيب تلقائية لقائمة الريلز',
+        s2Desc: 'افتح قائمة اختيار السورة المتناسقة مع تصميم البرنامج للانتقال إلى أي سورة من الـ ١١٤ سورة، مع عرض رقم السورة واسمها بالعربية والإنجليزية وعدد آياتها بوضوح (٢٨٦ آية).',
+        s2Li1: '<strong>تقسيم تلقائي للريلز:</strong> يتم تقسيم السور الطويلة تلقائياً إلى مقاطع ريلز متناسقة مع حدود الآيات.',
+        s2Li2: '<strong>إعادة موازنة فورية:</strong> عند تغيير بداية أو نهاية أي ريل، تتحدث جميع الريلز التالية تلقائياً بدون أخطاء.',
+        s2Li3: '<strong>تنقل فوري:</strong> اضغط على أي ريل في القائمة لمعاينته وتعديله مباشرة.',
+        s3Badge: 'الخطوة ٣ · محرر الموجة الصوتية الدقيق',
+        s3Title: 'حدّد بداية ونهاية التلاوة بسهولة على الموجة الصوتية',
+        s3Desc: 'استعرض الموجة الصوتية الزرقاء المتماثلة بوضوح مع تقسيمات كل ١٥ دقيقة وأرقام الآيات في الشريط السفلي، وشريط السورة الكاملة مع مستوى صوت افتراضي هادئ بنسبة ٢٠٪.',
+        s3Li1: '<strong>مقابض سحب مباشرة (S / E):</strong> اسحب المقبض الأخضر <strong>S</strong> (البداية) والمقبض البرتقالي <strong>E</strong> (النهاية) مباشرة على الموجة، أو اضغط أزرار البداية والنهاية عند المؤشر.',
+        s3Li2: '<strong>المحاذاة مع أقرب وقفة:</strong> تظهر الوقفات باللون الأزرق الفاتح عند التكبير؛ اضغط <strong>المحاذاة لأقرب وقفة</strong> لقص نظيف لا يقطع أي كلمة.',
+        s3Li3: '<strong>حفظ تلقائي فوري:</strong> كل تعديل على البداية أو النهاية يُحفظ تلقائياً ويحدّث المعاينة الحية للفيديو فوراً.',
+        s4Badge: 'الخطوة ٤ · استوديو الفيديو 9:16 والتصدير المباشر',
+        s4Title: 'نسّق الريل مباشرة وصدّره بضغطة زر واحدة',
+        s4Desc: 'شغّل المعاينة الحية 9:16 مع تكرار سلس بدون قفزات لخلفيات الفيديو، وظهور هادئ ومتدرج للنص يختفي في الوقفات بين الآيات — ثم صدّر الفيديو مباشرة بدون خطوات اعتماد معقدة.',
+        s4Li1: '<strong>وسائط جاهزة وتكرار سلس:</strong> يتضمن التطبيق خلفيات جاهزة للتجربة (<code>Sample1</code>–<code>Sample3</code>) مع إمكانية رفع فيديوهاتك وصورك الخاصة، وتكرار متداخل ناعم في المعاينة والتصدير.',
+        s4Li2: '<strong>دمج عدة تأثيرات معاً:</strong> اجمع بين سرعة التلاشي وحركة التكبير/التحريك والفلاتر اللونية (دافئ، ذهبي، ليلي، تظليل الأطراف، ضبابية ناعمة) مع علامة صح خضراء على المختار. اضغط خارج القائمة لإغلاقها.',
+        s4Li3: '<strong>تحكم كامل بالخط والعرض:</strong> عدّل <strong>الحجم</strong> (الافتراضي متوسط)، <strong>الموضع</strong>، <strong>الخلفية الشفافة</strong>، <strong>اللون</strong>، وخيارات <strong>إظهار اسم السورة</strong> و<strong>إظهار رقم الآية</strong> بالعربية والإنجليزية.',
+        s4Li4: '<strong>تصدير مباشر بضغطة زر:</strong> جاهز دائماً — يحفظ آخر تعديلاتك ويصدّر فيديو 720×1280 H.264 + AAC MP4 مباشرة داخل مجلد <strong>Exported Reels</strong>، ويتحول للأخضر مع <strong>✓ تم التصدير بنجاح</strong> عند الانتهاء.',
+        s5Badge: 'الخطوة ٥ · العربية والإنجليزية (عربي / EN)',
+        s5Title: 'دعم كامل للغتين العربية والإنجليزية',
+        s5Desc: 'بدّل بين <strong>عربي</strong> و <strong>EN</strong> من الشريط العلوي في أي وقت، ليتكيف كل من البرنامج ونص الفيديو تلقائياً:',
+        s5Li1: '<strong>الوضع العربي (عربي):</strong> يعرض النص القرآني بالرسم العثماني الموثّق (مجمع الملك فهد الإصدار ١٨) مع اسم السورة ورقم الآية المزخرف <code>﴿١﴾</code>.',
+        s5Li2: '<strong>الوضع الإنجليزي (EN):</strong> يجمع بين الآية العربية الموثّقة والترجمة الإنجليزية الكاملة مع إظهار اسم السورة ورقم الآية باللغتين.',
+        s5Li3: '<strong>سلامة النص القرآني:</strong> لا يتم اقتطاع أي آية أو تعديلها أو إعادة صياغتها أبداً.',
+        hwKicker: 'آلية العمل الداخلية',
+        hwTitle: 'كيف يعمل كل شيء محلياً على جهازك',
+        hwDesc: 'مبني لدقة النص القرآني وجودة الإخراج المرئي والخصوصية الكاملة بدون خوادم خارجية.',
+        hw1T: 'معالجة محلية ١٠٠٪',
+        hw1D: 'يعمل مباشرة على جهازك عبر Python/Flask + React + FFmpeg. بدون حسابات، بدون رفع ملفات للسحابة، وبدون علامات مائية.',
+        hw2T: 'تشكيل عربي أصيل (RAQM)',
+        hw2D: 'تُعرض كل آية بمحرك HarfBuzz/RAQM مع خط مصحف المدينة العثماني v18 لضمان دقة الحركات والتشكيل.',
+        hw3T: 'كشف ذكي للوقفات بين الآيات',
+        hw3D: 'يكشف السكتات بين نهاية الآية وبداية الآية التالية فقط، فيتلاشى النص بهدوء ولا يومض أبداً أثناء قراءة الآية.',
+        hw4T: 'تكرار سلس وصوت نقي',
+        hw4D: 'لا يتم تغيير سرعة أو نبرة التلاوة أبداً، وتُدمج الخلفيات بتكرار متداخل ناعم بدقة 720×1280 و ٢٤ إطاراً/ثانية.',
+        licKicker: 'المصدر المفتوح وحقوق المحتوى القرآني',
+        licTitle: 'مجاني للجميع — مفتوح المصدر ومحتوى قرآني مجاني من MP3Quran',
+        licDesc: 'مولّد ريلز القرآن مشروع مفتوح المصدر ومجاني تماماً لجميع المستخدمين للاستفادة منه ومشاركته، مع تلاوات قرآنية مجانية الاستخدام من موقع MP3Quran.',
+        mitTitle: '📜 برنامج مفتوح المصدر — رخصة MIT',
+        mitDesc: 'الشيفرة المصدرية للبرنامج <strong>مجانية ١٠٠٪ ومفتوحة المصدر</strong> بموجب رخصة <strong>MIT</strong>؛ يحق لأي مستخدم تحميلها واستخدامها وتعديلها ومشاركتها بحرية تامة.',
+        mitBoxHead: 'ما تمنحك إياه رخصة MIT:',
+        mitLi1: 'استخدام مجاني تماماً شخصياً أو تعليمياً أو للمجتمع',
+        mitLi2: 'حرية الاطلاع على الكود وتطويره والمساهمة فيه',
+        mitLi3: 'بدون أي رسوم أو اشتراكات أو علامات مائية أو تتبع',
+        mitLi4: 'نص رخصة MIT الكامل مضمّن داخل التطبيق ومستودع GitHub',
+        mp3Title: '🕌 محتوى قرآني مجاني — MP3Quran ومصادر النص',
+        mp3Desc: 'التلاوات القرآنية مصدرها موقع <strong>MP3Quran (mp3quran.net)</strong> المتاح للاستخدام القرآني المجاني، مع نص قرآني عثماني وترجمة إنجليزية موثّقة.',
+        mp3BoxHead: 'مصادر المحتوى القرآني المضمّنة والإسناد:',
+        mp3Li1: '<strong>الصوت والتلاوات:</strong> تلاوات قرآنية مجانية الاستخدام من <strong>MP3Quran</strong> (<code>mp3quran.net</code>) تُحمّل محلياً عند الطلب.',
+        mp3Li2: '<strong>النص العثماني والخط:</strong> نص وخط مجمع الملك فهد (KFGQPC Uthmani Hafs v18) — يُرجى الحفاظ على النص القرآني كما هو دون تغيير.',
+        mp3Li3: '<strong>الترجمة الإنجليزية:</strong> ترجمة صحيح إنترناشيونال عبر <strong>QuranEnc.com</strong> — يُحفظ الإسناد تلقائياً في بيانات ملف MP4 المُصدَّر.',
+        mp3Li4: '<strong>خلفيات الفيديو:</strong> يمكنك استخدام الخلفيات المجانية المتوفرة أو رفع فيديوهاتك وصورك الخالية من حقوق النشر.',
+        qsTitle: 'تطبيق مستقل وبسيط — جاهز خلال ثوانٍ',
+        qsDesc: 'لا حاجة لأي إعدادات تقنية أو مجلدات إضافية — ثبّت التطبيق مرة واحدة وابدأ صناعة ريلز القرآن فوراً.',
+        qsN1: '١', qsT1: 'تثبيت في خطوة واحدة', qsD1: 'افتح ملف <code>Quran-Reel-Generator.dmg</code> على ماك واسحب التطبيق إلى <strong>Applications</strong>، أو شغّل نسخة ويندوز مباشرة.',
+        qsN2: '٢', qsT2: 'تجربة فورية', qsD2: 'سورة الفاتحة لجميع القرّاء العشرة وخلفيات التجربة (<code>Sample1</code>–<code>Sample3</code>) مدمجة مع التطبيق لتجربته فوراً.',
+        qsN3: '٣', qsT3: 'تشغيل جميع السور الـ ١١٤', qsD3: 'اضغط <strong>تحميل صوت القرآن (١١٤ سورة)</strong> داخل التطبيق، أو اضغط <strong>اختر مجلد الصوتيات</strong> إذا كانت ملفاتك محفوظة مسبقاً.',
+        qsN4: '٤', qsT4: 'الوصول السريع لمقاطعك', qsD4: 'اضغط <strong>المقاطع المُصدَّرة</strong> في الشريط العلوي في أي وقت (أو <strong>إظهار في المجلد</strong> بعد التصدير) لفتح مجلد فيديوهات MP4 مباشرة.',
+        feedbackNote: 'إذا لاحظت أي شيء لا يعمل بالشكل الصحيح، أو رأيت أنني أخطأت في أي جزء من التطبيق، فلا تتردد أبداً في التواصل معي وتنبيهي؛ فملاحظاتك تساعدنا على تحسين هذا العمل ليظل دقيقاً ونافعاً للجميع.',
+        feedbackDua: 'جزاكم الله خيراً وجعله في ميزان حسناتكم',
+        feedbackContactLabel: 'للتواصل أو إرسال ملاحظة:',
+        footerLine1: 'مولّد ريلز القرآن | مفتوح المصدر (رخصة MIT) | مجاني لجميع المستخدمين | تلاوات مجانية من MP3Quran',
+        footerLine2: 'نرجو الحفاظ على دقة النص القرآني وتعظيمه في كل مقطع تنشره.',
+        footerAuthor: 'إنتاج المطور محمد علي',
+      },
+    };
+
+    function applyLang(lang) {
+      const dict = COPY[lang] || COPY.en;
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.querySelectorAll('[data-i18n]').forEach((el) => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+        const key = el.getAttribute('data-i18n-html');
+        if (dict[key] !== undefined) el.innerHTML = dict[key];
+      });
+      const btnEn = document.getElementById('btnEn');
+      const btnAr = document.getElementById('btnAr');
+      btnEn.classList.toggle('active', lang === 'en');
+      btnAr.classList.toggle('active', lang === 'ar');
+      btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+      btnAr.setAttribute('aria-pressed', String(lang === 'ar'));
+      try { localStorage.setItem('qvs.guide_lang', lang); } catch {}
+    }
+
+    document.getElementById('btnEn').addEventListener('click', () => applyLang('en'));
+    document.getElementById('btnAr').addEventListener('click', () => applyLang('ar'));
+
+    try {
+      const saved = localStorage.getItem('qvs.guide_lang');
+      if (saved === 'ar' || saved === 'en') {
+        applyLang(saved);
+      } else {
+        const langs = Array.isArray(navigator.languages) && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || ''];
+        if (langs.some((l) => String(l).toLowerCase().startsWith('ar'))) {
+          applyLang('ar');
+        }
+      }
+    } catch {}
+
+    // Lightbox with interactive Zoom In / Zoom Out
+    const lb = document.getElementById('lightbox');
+    const lbStage = document.getElementById('lbStage');
+    const lbImg = document.getElementById('lightboxImg');
+    const lbPct = document.getElementById('lbZoomPct');
+    let lbScale = 1;
+    let lbBaseWidth = 0;
+
+    const applyLbZoom = (nextScale) => {
+      lbScale = Math.max(1, Math.min(3, Math.round(nextScale * 4) / 4));
+      lbPct.textContent = `${Math.round(lbScale * 100)}%`;
+      if (lbScale <= 1) {
+        lb.classList.remove('is-zoomed');
+        lbImg.style.width = '';
+      } else {
+        if (!lbBaseWidth) lbBaseWidth = lbImg.getBoundingClientRect().width || Math.min(window.innerWidth * 0.9, 1100);
+        lb.classList.add('is-zoomed');
+        lbImg.style.width = `${Math.round(lbBaseWidth * lbScale)}px`;
+      }
+    };
+
+    document.querySelectorAll('.shot-frame img').forEach((img) => {
+      img.addEventListener('click', () => {
+        lbImg.src = img.src;
+        lbImg.alt = img.alt;
+        lbBaseWidth = 0;
+        applyLbZoom(1);
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => {
+          lbBaseWidth = lbImg.getBoundingClientRect().width || Math.min(window.innerWidth * 0.9, 1100);
+        });
+      });
+    });
+
+    const closeLb = () => {
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden', 'true');
+      applyLbZoom(1);
+    };
+
+    document.getElementById('lbZoomIn').addEventListener('click', (e) => { e.stopPropagation(); applyLbZoom(lbScale + 0.5); });
+    document.getElementById('lbZoomOut').addEventListener('click', (e) => { e.stopPropagation(); applyLbZoom(lbScale - 0.5); });
+    document.getElementById('lbZoomReset').addEventListener('click', (e) => { e.stopPropagation(); applyLbZoom(1); });
+    document.getElementById('lbClose').addEventListener('click', (e) => { e.stopPropagation(); closeLb(); });
+
+    lbImg.addEventListener('click', (e) => {
+      e.stopPropagation();
+      applyLbZoom(lbScale > 1 ? 1 : 2);
+    });
+
+    lbStage.addEventListener('click', (e) => {
+      if (e.target === lbStage) closeLb();
+    });
+
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) closeLb();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === '+' || e.key === '=') applyLbZoom(lbScale + 0.5);
+      if (e.key === '-') applyLbZoom(lbScale - 0.5);
+      if (e.key === '0') applyLbZoom(1);
+    });
+  </script>
+</body>
+</html>

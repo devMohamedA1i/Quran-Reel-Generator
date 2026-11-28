@@ -1,0 +1,9 @@
+{
+  "appId": "com.mascotlabs.quranreels",
+  "appName": "Quran Reels",
+  "webDir": "dist",
+  "android": {
+    "allowMixedContent": true,
+    "backgroundColor": "#f6f1e7"
+  }
+}

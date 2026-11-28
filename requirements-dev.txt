@@ -1,0 +1,10 @@
+# Test-only dependencies. Install with:
+#   .venv/bin/python -m pip install -r requirements-dev.txt
+-r requirements.txt
+pytest>=8,<10
+
+# Browser suites additionally need:
+#   - Node.js 18+ (for tests/run-all.mjs and the CDP harness)
+#   - Google Chrome or Chromium with remote debugging (tests/chrome.mjs)
+#   - FFmpeg/FFprobe on PATH (also a runtime requirement)
+# They are not pip packages; see tests/README.md for the harness layout.

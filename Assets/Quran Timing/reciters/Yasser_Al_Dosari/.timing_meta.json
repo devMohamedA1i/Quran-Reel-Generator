@@ -1,0 +1,9 @@
+{
+  "reciter_id": "dosari",
+  "reciter_name": "Sheikh Yasser Al-Dosari",
+  "edition_id": "mp3quran-dosari-murattal-r1",
+  "mp3quran_reciter_id": 92,
+  "mp3quran_read_id": 92,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/yasser-dosari/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=92"
+}

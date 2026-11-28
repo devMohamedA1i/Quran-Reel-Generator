@@ -1,0 +1,63 @@
+name: Build Windows Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    name: Windows (x64 .exe + .zip)
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Build Windows standalone app
+        shell: pwsh
+        run: .\scripts\build_windows.ps1
+
+      - name: Verify Windows executable starts cleanly
+        shell: pwsh
+        run: |
+          $env:QVS_PORT = "5058"
+          $env:QVS_NO_BROWSER = "1"
+          $exe = ".\dist_win\Quran Reel Generator\Quran Reel Generator.exe"
+          $p = Start-Process -FilePath $exe -PassThru
+          $ok = $false
+          for ($i = 0; $i -lt 50; $i++) {
+            try {
+              $r = Invoke-WebRequest -UseBasicParsing -Uri "http://127.0.0.1:5058/api/health" -TimeoutSec 2
+              if ($r.StatusCode -eq 200) { $ok = $true; break }
+            } catch {}
+            Start-Sleep -Milliseconds 300
+          }
+          Stop-Process -Id $p.Id -Force -ErrorAction SilentlyContinue
+          if (-not $ok) { throw "Windows standalone app failed health check" }
+          Write-Host "Windows standalone app verified (HTTP 200)!"
+
+      - name: Upload Windows artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: Quran-Reel-Generator-Windows
+          path: Quran-Reel-Generator-Windows.zip
+
+      - name: Attach Windows zip to GitHub Release (on tag push)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: Quran-Reel-Generator-Windows.zip

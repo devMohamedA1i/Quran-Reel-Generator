@@ -1,0 +1,133 @@
+# Quran Reel Generator — repository and release hygiene
+#
+# RELEASE_AUDIT Phase 0/1, finalised 2026-11-23.
+# DENY BY DEFAULT for anything user-supplied, rights-unverified, generated or
+# machine-local. `git add .` must never publish media, drafts, reels, backups,
+# caches or private notes. Only source code, small text data and documentation
+# are committable. The matching `git archive` exclusions are in .gitattributes.
+
+# --- Python environments and caches -------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- OS / editor noise ---------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# --- Backups and private artefacts (local only, never published) ---------
+.backups/
+.backup-before-audio-player/
+*.backup
+*.bak
+
+# Private handoff / internal dev reports & legacy Chrome test scripts.
+HANDOFF.md
+LATEST_HANDOFF.md
+PHASE1_REPORT.md
+FINAL_TEST_HANDOFF.md
+REACT_UI_MIGRATION_FINAL_REPORT.md
+RELEASE_AUDIT.md
+TEN_RECITERS_DATASET_RESEARCH_REPORT.md
+Review/
+docs/superpowers/
+tests/*.mjs
+
+# --- Caches, logs, browser/test scratch ----------------------------------
+.qvs_cache/
+tests/.chrome-profile/
+tests/.sandbox/
+tests/.sandbox.pid
+tests/logs/
+tests/sandbox-server.log
+tests/draft-baseline/
+tests/screenshots/
+logs/
+*.log
+
+# --- Generated application state (user data, not code) -------------------
+Draft/
+Output/
+
+# --- User-supplied / rights-unverified media ------------------------------
+# ALL of Assets/ is excluded by default: recitation audio, backgrounds,
+# Quran text/timing datasets, fonts and icons. The only exception is the
+# small provenance record below, which is documentation, not media.
+Assets/**
+!Assets/licences/
+!Assets/licences/SOURCES.txt
+
+# Explicit reminders of what the rule above covers (also catches files that
+# might be force-added from elsewhere in the tree):
+*.mp3
+*.mp4
+*.mov
+*.webm
+*.wav
+*.m4a
+*.ttf
+*.otf
+*.woff
+*.woff2
+
+# --- Starter bundle assets (required to run & build standalone releases) --
+# Full 16 GB audio library and 1.1 GB personal videos remain excluded above;
+# only the lightweight core Quran data, font, icons, 3 starter samples, and
+# starter Surah Al-Fatihah (001.mp3) are tracked.
+!Assets/AppIcon.ico
+!Assets/AppIcon.icns
+!Assets/Banner.png
+!Assets/fonts/
+!Assets/fonts/UthmanicHafs1Ver18.ttf
+!Assets/Quran Text/
+!Assets/Quran Text/**
+!Assets/Quran Timing/
+!Assets/Quran Timing/**
+!Assets/Background Templates/
+!Assets/Background Templates/Videos/
+!Assets/Background Templates/Videos/Sample1.mp4
+!Assets/Background Templates/Videos/Sample2.mp4
+!Assets/Background Templates/Videos/Sample3.mp4
+!Assets/audio/
+!Assets/audio/*/
+!Assets/audio/*/001.mp3
+
+# --- Standalone build outputs --------------------------------------------
+build/
+dist/
+build_win/
+dist_win/
+*.spec
+*.dmg
+*.app/
+Quran-Reel-Generator-Windows.zip
+
+# --- Node / React frontend & Mobile PWA build caches ---------------------
+node_modules/
+frontend/node_modules/
+frontend/.vite/
+mobile-pwa/node_modules/
+mobile-pwa/dist/
+mobile-pwa/.vite/
+mobile-pwa/public/data/
+mobile-pwa/public/assets/
+!mobile-pwa/samples/
+!mobile-pwa/samples/*.mp4
+!mobile-pwa/samples/*.jpg
+
+# NOTE: `Review/` is intentionally committable — it is the per-phase review
+# deliverable. `FINAL_TEST_HANDOFF.md` is the release-test handover document.

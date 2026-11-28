@@ -1,0 +1,9 @@
+{
+  "reciter_id": "afasy",
+  "reciter_name": "Sheikh Mishary Rashid Al-Afasy",
+  "edition_id": "mp3quran-afasy-murattal-r1",
+  "mp3quran_reciter_id": 123,
+  "mp3quran_read_id": 123,
+  "mp3quran_server": "https://cdn.mp3quran.net/audio/mishary-alafasy/r1/",
+  "endpoint": "https://www.mp3quran.net/api/v3/ayat_timing?surah={surah}&read=123"
+}
